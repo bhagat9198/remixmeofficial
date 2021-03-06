@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DJ Snasa | Official Website</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- boostrap -->
+    <link rel = "icon" href =  
+    "assets/images/logo.png" 
+        type = "image/x-icon"> 
+    <link rel="stylesheet" href="./assets/animate.css" />
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+  <style>
+    .file-upload {
+  background-color: #ffffff;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.file-upload-btn {
+  width: 100%;
+  margin: 0;
+  color: #fff;
+  background: #1FB264;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  border-bottom: 4px solid #15824B;
+  transition: all .2s ease;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.file-upload-btn:hover {
+  background: #1AA059;
+  color: #ffffff;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+.file-upload-btn:active {
+  border: 0;
+  transition: all .2s ease;
+}
+
+.file-upload-content {
+  display: none;
+  text-align: center;
+}
+
+.file-upload-input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.image-upload-wrap {
+  margin-top: 20px;
+  border: 4px dashed #1FB264;
+  position: relative;
+}
+
+.image-dropping,
+.image-upload-wrap:hover {
+  background-color: #1FB264;
+  border: 4px dashed #ffffff;
+}
+
+.image-title-wrap {
+  padding: 0 15px 15px 15px;
+  color: #222;
+}
+
+.drag-text {
+  text-align: center;
+}
+
+.drag-text h3 {
+  font-weight: 100;
+  text-transform: uppercase;
+  color: #15824B;
+  padding: 60px 0;
+}
+
+.file-upload-image {
+  max-height: 200px;
+  max-width: 200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.remove-image {
+  width: 200px;
+  margin: 0;
+  color: #fff;
+  background: #cd4535;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  border-bottom: 4px solid #b02818;
+  transition: all .2s ease;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.remove-image:hover {
+  background: #c13b2a;
+  color: #ffffff;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+.remove-image:active {
+  border: 0;
+  transition: all .2s ease;
+}
+  </style>
+  <body>
+    <!-- <div id="fb-root"></div>
+    <script>
+      (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src =
+          "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=249078091804020&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
+    </script> -->
+
+    <!-- Header Starts -->
+    <div class="navbar-wrapper">
+      <div class="container">
+        <div
+          class="navbar navbar-inverse navbar-fixed-top animated fadeInDown"
+          role="navigation"
+          id="top-nav"
+        >
+          <div class="container">
+            <div class="navbar-header">
+              <!-- Logo Starts -->
+              <a href="#" class="navbar-brand" 
+                ><img
+                  src="./assets/images/logo.png"
+                  height="35"
+                  style="width: 60px; height: 38px; object-fit: cover"
+                  alt="logo"
+              /></a>
+              <!-- #Logo Ends -->
+
+              <button
+                type="button"
+                class="navbar-toggle collapsed"
+                data-toggle="collapse"
+                data-target=".navbar-collapse"
+              >
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+
+            <!-- Nav Starts -->
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#playlist">Playlist</a></li>
+                <li><a href="#">Participate</a></li>
+                <li><a href="#blogevents">Leaderboard</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </div>
+            <!-- #Nav Ends -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- #Header Starts -->
+
+    <!-- overlay -->
+    <div class="container overlay">
+      <!-- home banner starts -->
+      <div id="home" class="homeinfo">
+        <div class="row">
+          <div class="col-sm-6 col-xs-12">
+            <div class="fronttext">
+              <h2 class="bgcolor animated fadeInUpBig" style="">
+                <!-- <span class="glyphicon glyphicon-headphones"></span>--><img class="frontImage" style="width: 100px;height: 200px;object-fit: cover;" src="assets/images/LogoWhite.png"> emixMe - Manchale
+                <h4 style="font-size: 22px;font-weight: 800;color: #ffffff;">REMIX "MANCHALE" AND WIN AN OFFICIAL REMIX RELEASE ON ALL MUSIC STORES!</h4>
+              </h2>
+              <br />
+              <br />
+              <p class="animated fadeInUp">
+                  With it's release "Manchale" connected with a lot of hearts because of it's unique blend between Indian Music and Electronic Music. </p>
+
+                  <p>"Producers all over India are contacting us (RaveJaxx and Renee) to make remix so looking at the request I thought of why not let's do something about it. I decided to do a remix contest and with my available resources give them all that I can. With the amazing support from my friends at CrossHex this thought was made possible and here we are" - Snasa</p>
+
+                  <p>Download the stems,make crazy remix and most importantly do not forget to submit your entries before the deadline.
+                  Good Luck!</p>
+              
+              <br />
+              <a href="Auth/login.html"><button
+                class="btn btn-warning bgcolor loginbtn"
+                style="
+                  margin-top: 5%;
+                  background-color: red;
+                  width: 300px;
+                  height: 50px;
+                  font-size: 20px;
+                  border: none;
+                "
+              >
+                Login to Participate/Vote
+              </button></a>
+              <a href="#"  data-toggle="modal"
+              data-target="#blogdetail"><button
+                class="btn btn-warning bgcolor loginbtn"
+                style="
+                  margin-top: 5%;
+                  background-color: red;
+                  width: 300px;
+                  height: 50px;
+                  border: none;
+                  font-size: 24px;
+                "
+              >
+                Participate Now
+              </button></a>
+              <br>
+            </div>
+          </div>
+
+          <div class="col-sm-5 col-xs-12 col-sm-offset-1">
+            <div class="player">
+              <!-- <img
+                src="./assets/images/dj.png"
+                class="graphics hidden-xs animated fadeInRightBig"
+                alt="dj"
+              /> -->
+              <iframe
+                class="iframe"
+                src="https://open.spotify.com/embed/track/4IpSnn02Vk3hLQn0rAzI9f"
+                width="100%"
+                height="280"
+                scrolling="no"
+                frameborder="10"
+                allowtransparency="true"
+                allow="encrypted-media"
+                style="background-color: gray;"
+              ></iframe>
+              <!-- <iframe width="100%" height="170" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/66392700&amp;color=f2ab00&amp;theme_color=000000&amp;auto_play=true&amp;hide_related=true&amp;show_artwork=false"></iframe> -->
+            </div>
+            <Br>
+            <span style="color: white ;font-weight: 900; padding: 10px;background-color: orange;" > Contest Ends in  <span id="Timer"></span>
+          </div>
+        </div>
+      </div>
+      <!-- home banner ends -->
+      <!-- <div class="background"> -->
+        <!-- <div class="container"> -->
+          <div class="panel pricing-table">
+            
+            <div class="pricing-plan">
+              <img src="assets/images/1stprize.png" alt="" class="pricing-img">
+              <h2 class="pricing-header">First Prize</h2>
+              <ul class="pricing-features">
+                <li class="pricing-features-item">Official Remix </li>
+                <li class="pricing-features-item"> Collaboration</li>
+              </ul>
+              <!-- <span class="pricing-price">Free</span>
+              <a href="#/" class="pricing-button">Sign up</a> -->
+            </div>
+            
+            <div class="pricing-plan">
+              <img src="assets/images/NEW LOGO.png" alt="" class="pricing-img">
+              <h2 class="pricing-header">Second Prize</h2>
+              <ul class="pricing-features">
+                <li class="pricing-features-item">Mixing & Mastering By Snasa</li>
+                <!-- <li class="pricing-features-item"></li> -->
+              </ul>
+              <!-- <span class="pricing-price">$150</span>
+              <a href="#/" class="pricing-button is-featured">Free trial</a> -->
+            </div>
+            
+            <div class="pricing-plan">
+              <img src="assets/images/Option C.png" alt="" class="pricing-img">
+              <h2 class="pricing-header">Third Prize</h2>
+              <ul class="pricing-features">
+                <li class="pricing-features-item">Custom Album Art By Option C Studios</li>
+                <!-- <li class="pricing-features-item">Simple horizontal scalability</li> -->
+              </ul>
+              <!-- <span class="pricing-price">$400</span>
+              <a href="#/" class="pricing-button">Free trial</a> -->
+            </div>
+            
+          </div>
+        <!-- </div> -->
+      <!-- </div> -->
+      <!-- blockblack -->
+      <div class="blockblack">
+        <!-- About Starts -->
+       
+        <!-- #playlist Ends -->
+
+        <!-- latest release starts-->
+        <!-- <div id="album" class="releases spacer">
+          <h3>
+            <span class="glyphicon glyphicon-calendar"></span> OnGoing Events
+          </h3>
+          <div class="row">
+          
+
+            <div class="col-sm-3 col-xs-12">
+              <div class="album">
+                <img
+                  src="./assets/images/1.jpg"
+                  class="img-responsive"
+                  alt="music theme"
+                />
+                <div class="albumdetail">
+                  <h5>REMIXME @ MANCHALE</h5>
+                  <a
+                    href="#"
+                    class="listen"
+                    data-toggle="modal"
+                    data-target="#blogdetail"
+                    ><span class="glyphicon glyphicon-headphones"></span> Participate Now</a
+                  >
+                  &nbsp;
+                  <a
+                 
+                  href="#"
+                  class="listen"
+                  data-toggle="modal"
+                  data-target="#albumdetail"
+                  ><span class="glyphicon glyphicon-headphones"></span> Listen Song</a
+                ><br>
+                <a
+         
+                ><span style="color: red ;" > Ends in  <span id="Timer"></span></span></a
+              >
+                </div>
+                
+              </div>
+            </div>
+
+            
+
+          </div>
+        </div> -->
+        <!-- latest release ends-->
+
+        <!--Blog Event Starts-->
+        <h3>
+          <span class="glyphicon glyphicon-calendar"></span> #Leader-Board
+        </h3>
+
+        <div id="blogevents" class="blogevent "style="" >
+          <div class="row">
+            <!-- events -->
+            <div class="col-md-12 col-xs-12">
+              <div class="events">
+             
+                <ul >
+                  <li style="background-color: #420202;">
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-2 col-lg-2 date">
+                        <h1>#1</h1>
+                        <span>Username</span>
+                        <h5> <i style="color: green;" class="fa fa-arrow-up">7</i> </h5>
+
+                      </div>
+                      <div class="col-xs-12 col-sm-2 col-lg-3">
+                        <a
+                          href="#"
+                       
+                          ><img
+                            src="./assets/images/2.jpg"
+                            class="img-responsive resImg" 
+                            alt="music theme"
+                        /></a>
+                      </div>
+                      <div class="col-xs-12 col-sm-4 col-lg-4">
+                        <h5>
+                          <a
+                            href="#"
+                            data-toggle="modal"
+                            data-target="#blogdetail"
+                            >Manchale[ "Artist Name" Remix]</a
+                          >
+                        </h5>
+                        <p>
+                          Download the stems,make crazy remix and most importantly do not forget to submit your entries before the deadline.
+                  Good Luck!
+                  Download the stems,make crazy remix and most importantly do not forget to submit your entries before the deadline.
+                  Good Luck!
+                        </p>
+                        <iframe width="100%" height="95" src="https://www.youtube.com/embed/wG9bIdbyPjw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen gesture="media" allow="encrypted-media"></iframe>
+                      </div>
+                      <div class="col-xs-12 col-sm-3 col-lg-3 date" style="background-color: transparent!important;;">
+                        <h2>
+                        
+                        <div>
+                          <i class="heart fa fa-heart-o" style="background-color: transparent !important ;padding: 12px;border-radius: 0px;cursor: pointer;font-size: 15px;border: 1px solid white ;margin-bottom: 2%;">&nbsp;Vote </i>
+                        </div>
+                        
+                        </h2>
+                        <span><i class="star fa fa-share"style="background-color: transparent !important ;padding: 12px;border-radius: 0px;cursor: pointer;font-size: 15px;border: 1px solid white ;margin-bottom: 2%;">&nbsp;Share</i></span>
+                      </div>
+                    
+                    </div>
+                  </li>
+                  <br>
+                  <li style="background-color: #420202;">
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-2 col-lg-2 date">
+                        <h1>#2</h1>
+                        <span>Username</span>
+                        <h5> <i style="color: red;" class="fa fa-arrow-down">3</i> </h5>
+
+                      </div>
+                      <div class="col-xs-12 col-sm-2 col-lg-3">
+                        <a
+                          href="#"
+                 
+                          ><img
+                            src="./assets/images/3.jpg"
+                            class="img-responsive resImg" 
+                            alt="music theme"
+                        /></a>
+                      </div>
+                      <div class="col-xs-12 col-sm-4 col-lg-4">
+                        <h5>
+                          <a
+                            href="#"
+                            data-toggle="modal"
+                            data-target="#blogdetail"
+                            >Track Name</a
+                          >
+                        </h5>
+                        <p>
+                          Track Description
+                        </p>
+                        <iframe width="100%" height="95" src="https://www.youtube.com/embed/wG9bIdbyPjw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen gesture="media" allow="encrypted-media"></iframe>
+                      </div>
+                      <div class="col-xs-12 col-sm-3 col-lg-3 date" style="background-color: transparent!important;;">
+                        <h2>
+                        
+                        <div>
+                          <i class="heart fa fa-heart-o" style="background-color: transparent !important ;padding: 12px;border-radius: 0px;cursor: pointer;font-size: 15px;border: 1px solid white ;margin-bottom: 2%;">&nbsp;Vote </i>
+                        </div>
+                        
+                        </h2>
+                        <span><i class="star fa fa-share"style="background-color: transparent !important ;padding: 12px;border-radius: 0px;cursor: pointer;font-size: 15px;border: 1px solid white ;margin-bottom: 2%;">&nbsp;Share</i></span>
+                      </div>
+                    
+                    </div>
+                  </li>
+            
+                 
+              
+                </ul>
+              </div>
+              <Span style=" float: right;"><blockquote style="font-weight: 700;font-size: 11px !important"> The winners won't be selected on the basis of votes and position in leaderboard. The decision will be purely based on the music.</blockquote></Span>
+            </div>
+            <!-- events -->
+
+            <!-- blog -->
+         
+            <!-- blog -->
+          </div>
+        </div>
+        <!--Blog Events Ends-->
+        <div id="about" class="spacer">
+          <h3><span class="glyphicon glyphicon-user"></span> About Me</h3>
+          <div class="row">
+            <div class="col-lg-4 col-sm-3 col-xs-12">
+              <img src="./assets/images/ceo.png" class="img-responsive"
+              alt="about"/ style="width: 300px!important ;height: 300px;
+              object-fit: cover;">
+            </div>
+            <div class="col-lg-8 col-sm-9 col-xs-12">
+              <p>
+                Anupam Mishra aka Snasa, is a young budding INDIAN DJ /Producer.
+                At age 7 , he was introduced to music in the form of singing
+                (Indian classical music ). At age 13 , he heard first EDM track
+                (Martin Garrix - Animals) and then the journey began. Age 14 -
+                <span id="dots">...</span>
+                <span id="more">
+                He made his first ever EDM Track Jack It Up to which he states
+                "The Sounds Were Very Basic And Amateur HAHA(Laughs) . Don,t
+                judge me on that " . He made Tracks After Track on genres Big
+                Room, Future Bass, Progressive House Age 15 -One Of His Budding
+                Tracks Got Placed As No.1 On Reverbnation Mumbai Charts . Age 16
+                - First Break Through Track Carnival Went Online and People
+                Instantly Clicked with It and Were Jumping to It . He Played At
+                One Of The Happening Scenes In Mumbai #NotronikBurnInGlow . It
+                Was His Debut Set Remembering Which He States "The Crowd Was
+                Epic , I was so Nervous My Hands Were Shaking Before Pressing
+                the PLAY . I said to Myself that This Is It And Pressed PLAY And
+                The Energy Was SO HIGH , It Was ABOVE THE ROOF". It was a
+                successful event. Recent : He has had Some Amazing Tracks with
+                Aalochak, Rezzr, Bebaak, RaveJaxx. Meri Kismat and Manchale has
+                entered so Many hearts and at the same time Maahol is making
+                people to bang their Bass Up the notch. His music is sure to
+                make you Swing your BODY on the Kick and Bass.
+                His biggest musical influences include Martin Garrix , @Tiësto,
+                  Julian Jordan , Jay Hardway , ILLENIUM , Flume . Spread #LOVE
+                  and #PEACE.
+            
+              </p>
+             </span>
+              <button class="btn " onclick="myFunction()" id="myBtn">Read more</button>
+            </div>
+            <div class="col-lg-3 visible-lg">
+              <div
+                class="fb-like-box"
+                data-href="http://www.facebook.com/thebootstrapthemes"
+                data-colorscheme="dark"
+                data-show-faces="true"
+                data-header="false"
+                data-stream="false"
+                data-show-border="false"
+                data-width="255"
+              ></div>
+            </div>
+          </div>
+        </div>
+        <!-- About Ends -->
+
+        <!-- playlist Starts -->
+        <div id="playlist" class="spacer">
+          <div class="row">
+            <div class="col-md-12 col-xs-12">
+              <h3><span class="glyphicon glyphicon-list"></span> Playlist</h3>
+              <iframe
+                class="iframe"
+                src="https://open.spotify.com/embed/artist/0sGlHhb62jY1XBjDWCntQl"
+                width="330"
+                height="380"
+                frameborder="0"
+                allowtransparency="true"
+                allow="encrypted-media"
+              ></iframe>
+              <iframe
+                class="iframe"
+                src="https://open.spotify.com/embed/playlist/332Wvn6EcGo3Bc2izhnjWk"
+                width="330"
+                height="380"
+                frameborder="0"
+                allowtransparency="true"
+                allow="encrypted-media"
+              ></iframe>
+              <iframe
+                class="iframe"
+                src="https://open.spotify.com/embed/playlist/6Wfi6mbQXQXRclBpbxFgob"
+                width="330"
+                height="380"
+                frameborder="0"
+                allowtransparency="true"
+                allow="encrypted-media"
+              ></iframe>
+              <iframe
+                class="iframe"
+                src="https://open.spotify.com/embed/playlist/2oLVcDsc5W5jGGaU692ciX"
+                width="330"
+                height="380"
+                frameborder="0"
+                allowtransparency="true"
+                allow="encrypted-media"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+        <!--Contact Starts-->
+        <div id="contact" class="spacer">
+          <div class="contactform center">
+            <h3><span class="glyphicon glyphicon-envelope"></span> Contact</h3>
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <h4>Get in touch or<br /><b>Just say Hello!</b></h4>
+                <input type="text" placeholder="Name" />
+                <input type="text" placeholder="Email" />
+                <textarea rows="5" placeholder="Message"></textarea>
+                <button class="btn btn-warning bgcolor">Send</button>
+              </div>
+            </div>
+
+            <!-- map -->
+            <div class="map clearfix">
+              <div
+                class="fb-like-box"
+                data-href="https://www.facebook.com/thebootstrapthemes"
+                data-width="100%"
+                data-colorscheme="light"
+                data-show-faces="true"
+                data-header="true"
+                data-stream="false"
+                data-show-border="true"
+              ></div>
+            </div>
+            <!-- map -->
+          </div>
+          <!--Contact Ends-->
+        </div>
+      </div>
+      <!-- blockblack -->
+    </div>
+    <!-- overlay -->
+
+    <!-- Footer Starts -->
+    <div id="footer">
+      <div class="container">Copyright 2021 DJ SNASA. ❤ By CrossHex</div>
+    </div>
+    <!-- # Footer Ends -->
+
+    <!-- background slider -->
+    <div id="myCarousel" class="carousel slide hidden-xs">
+      <div class="carousel-inner">
+        <div class="active item">
+          <img src="./assets/images/back1.jpg" alt="" />
+        </div>
+        <div class="item"><img src="./assets/images/back2.jpg" alt="" /></div>
+        <div class="item"><img src="./assets/images/back3.jpg" alt="" /></div>
+      </div>
+    </div>
+    <!-- background slider -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="blogdetail" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-hidden="true"
+          >
+            &times;
+          </button>
+
+          <div id="blog">
+            <h2 style="font-size: 1em;">Upload your Track here</h2>
+            <!-- <small >Posted on: Jan 20, 2013</small> -->
+<!-- 
+            <a href="#" class="thumbnail"
+              ><img
+                src="./assets/images/1.jpg"
+                class="img-reponsive"
+                alt="blog"
+            /></a> -->
+            <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+            <div class="file-upload">
+              <button class="file-upload-btn uploadBtn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add An Album Art</button>
+
+              <div class="image-upload-wrap">
+                <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+                <div class="drag-text">
+                  <h3> Select An Album Art</h3>
+                </div>
+              </div>
+              <div class="file-upload-content">
+                <img class="file-upload-image" src="#" alt="your image" />
+                <div class="image-title-wrap">
+                  <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                </div>
+              </div>
+            <h2 style="font-size: 20px !important;">Insert the youtube url of your track</h2>
+            <div class="col-lg-12 col-lg-offset-0">
+              <div class="form-group">
+                <span>https://</span>
+                <input class="form-field" id="getLink" type="text" placeholder="domain.tld">
+                &nbsp;<button class="btn" id="urlLink">Verify ✔</button>
+             </div>
+             <iframe height="480" width="500"  id="embed" style="display: none;"
+              src="#"> 
+              </iframe> 
+            </div>
+            <h2 style="font-size: 20px !important;">Description about your track</h2>
+            
+            <div class="col-lg-8 col-lg-offset-0">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="row">
+                    <div class="col-lg-8">
+                      <div class="form-group">
+               
+                        <textarea class="form-field" type="text" style="height: 12em;" placeholder="Description">
+                        </textarea>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+               
+                        <button class="btn btnUpload" style="background-color: #1FB264;">Upload Now</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+            </div>
+             
+            </div>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="albumdetail" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <h2> A Snasa Production</h2>
+          <iframe
+          class="iframe"
+          src="https://open.spotify.com/embed/track/4IpSnn02Vk3hLQn0rAzI9f"
+          width="100%"
+          height="280"
+          scrolling="no"
+          frameborder="10"
+          allowtransparency="true"
+          allow="encrypted-media"
+        ></iframe>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <div class="modal fade" id="uploadDetails" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <h2>Crazy Fresco</h2>
+          <iframe
+            width="100%"
+            height="450"
+            scrolling="no"
+            frameborder="no"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/24314082&amp;theme_color=000000&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_artwork=false"
+          ></iframe>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <script
+      src="http://code.jquery.com/jquery-1.7.1.min.js"
+      type="text/javascript"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- boostrap -->
+    <script
+      src="./assets/bootstrap/js/bootstrap.js"
+      type="text/javascript"
+    ></script>
+    <script src="./assets/scripts/plugins.js" type="text/javascript"></script>
+    <script src="./assets/scripts/script.js" type="text/javascript"></script>
+  </body>
+  <script>
+    function myFunction() {
+      var dots = document.getElementById("dots");
+      var moreText = document.getElementById("more");
+      var btnText = document.getElementById("myBtn");
+
+      if (dots.style.display === "none") {
+        dots.style.display = "inline";
+        btnText.innerHTML = "Read more";
+        moreText.style.display = "none";
+      } else {
+        dots.style.display = "none";
+        btnText.innerHTML = "Read less";
+        moreText.style.display = "inline";
+      }
+    }
+
+var countDownDate = new Date("April 16, 2021 11:59:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("Timer").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("Timer").innerHTML = "EXPIRED";
+  }
+}, 1000);
+
+function readURL(input) {
+  if (input.files && input.files[0]) {
+
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('.image-upload-wrap').hide();
+
+      $('.file-upload-image').attr('src', e.target.result);
+      $('.file-upload-content').show();
+
+      $('.image-title').html(input.files[0].name);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+
+  } else {
+    removeUpload();
+  }
+}
+
+function removeUpload() {
+  $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+  $('.file-upload-content').hide();
+  $('.image-upload-wrap').show();
+}
+$('.image-upload-wrap').bind('dragover', function () {
+    $('.image-upload-wrap').addClass('image-dropping');
+  });
+  $('.image-upload-wrap').bind('dragleave', function () {
+    $('.image-upload-wrap').removeClass('image-dropping');
+});
+
+document.getElementById("urlLink").addEventListener("click",function(){
+
+  document.getElementById("embed").style.display="inline-block";
+  let url=document.getElementById("getLink").value;
+  document.getElementById("embed").src="https://www.youtube.com/embed/"+url.substring(17);
+})
+
+
+
+$(".heart.fa").click(function() {
+  $(this).toggleClass("fa-heart fa-heart-o");
+});
+
+
+  </script>
+</html>
