@@ -5,14 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="viewport" content="width=device-width, user-scalable=no" />
-    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./../assets/bootstrap/css/bootstrap.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="icon" href="assets/images/logo.png" type="image/x-icon" />
-    <link rel="stylesheet" href="./assets/animate.css" />
-    <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="icon" href="./../assets/images/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./../assets/animate.css" />
+    <link rel="stylesheet" href="./../assets/style.css" />
   </head>
   <style>
     .file-upload {
@@ -139,7 +139,7 @@
             <div class="navbar-header">
               <a href="#" class="navbar-brand"
                 ><img
-                  src="./assets/images/logo.png"
+                  src="./../assets/images/logo.png"
                   height="35"
                   style="width: 60px; height: 38px; object-fit: cover"
                   alt="logo"
@@ -166,6 +166,9 @@
                 <li><a href="#">Participate</a></li>
                 <li><a href="#blogevents">Leaderboard</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li>
+                  <a href="!#" id="logout-btn" class="btn btn-danger">LogOut</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -182,7 +185,7 @@
                 <img
                   class="frontImage"
                   style="width: 100px; height: 200px; object-fit: cover"
-                  src="assets/images/LogoWhite.png"
+                  src="./../assets/images/LogoWhite.png"
                 />
                 emixMe - Manchale
                 <h4 style="font-size: 22px; font-weight: 800; color: #ffffff">
@@ -213,21 +216,6 @@
               </p>
 
               <br />
-              <a href="Auth/login.html"
-                ><button
-                  class="btn btn-warning bgcolor loginbtn"
-                  style="
-                    margin-top: 5%;
-                    background-color: red;
-                    width: 300px;
-                    height: 50px;
-                    font-size: 20px;
-                    border: none;
-                  "
-                >
-                  Login to Participate/Vote
-                </button></a
-              >
               <a href="#" data-toggle="modal" data-target="#blogdetail"
                 ><button
                   class="btn btn-warning bgcolor loginbtn"
@@ -241,6 +229,22 @@
                   "
                 >
                   Participate Now
+                </button></a
+              >
+
+              <a href="https://www.toneden.io/snasa/post/kanye-west-lil-pump-ft-adele-givens-i-love-it-acapell" target="_blank"
+                ><button
+                  class="btn btn-warning bgcolor loginbtn"
+                  style="
+                    margin-top: 5%;
+                    background-color: red;
+                    width: 300px;
+                    height: 50px;
+                    border: none;
+                    font-size: 24px;
+                  "
+                >
+                  Download Stems
                 </button></a
               >
               <br />
@@ -270,15 +274,18 @@
                 background-color: orange;
               "
             >
-              Contest Ends in
-            </span>
-            <span id="Timer"></span>
+              Contest Ends in <span id="Timer"></span
+            ></span>
           </div>
         </div>
       </div>
       <div class="panel pricing-table">
         <div class="pricing-plan">
-          <img src="assets/images/1stprize.png" alt="" class="pricing-img" />
+          <img
+            src="./../assets/images/1stprize.png"
+            alt=""
+            class="pricing-img"
+          />
           <h2 class="pricing-header">First Prize</h2>
           <ul class="pricing-features">
             <li class="pricing-features-item">Official Remix</li>
@@ -287,7 +294,11 @@
         </div>
 
         <div class="pricing-plan">
-          <img src="assets/images/NEW LOGO.png" alt="" class="pricing-img" />
+          <img
+            src="./../assets/images/NEW LOGO.png"
+            alt=""
+            class="pricing-img"
+          />
           <h2 class="pricing-header">Second Prize</h2>
           <ul class="pricing-features">
             <li class="pricing-features-item">Mixing & Mastering By Snasa</li>
@@ -295,7 +306,11 @@
         </div>
 
         <div class="pricing-plan">
-          <img src="assets/images/Option C.png" alt="" class="pricing-img" />
+          <img
+            src="./../assets/images/Option C.png"
+            alt=""
+            class="pricing-img"
+          />
           <h2 class="pricing-header">Third Prize</h2>
           <ul class="pricing-features">
             <li class="pricing-features-item">
@@ -313,7 +328,7 @@
           <div class="row">
             <div class="col-md-12 col-xs-12">
               <div class="events">
-                <ul  id="all-albums-list">
+                <ul id="all-albums-list">
                   <!-- <li style="background-color: #420202">
                     <div class="row">
                       <div class="col-xs-12 col-sm-2 col-lg-2 date">
@@ -361,7 +376,7 @@
                       </div>
                       <div
                         class="col-xs-12 col-sm-3 col-lg-3 date"
-                        style="background-color: transparent !important "
+                        style="background-color: transparent !important"
                       >
                         <h2>
                           <div>
@@ -399,7 +414,6 @@
                     </div>
                   </li>
                   <br /> -->
-                  
                 </ul>
               </div>
               <span style="float: right"
@@ -418,8 +432,8 @@
           <h3><span class="glyphicon glyphicon-user"></span> About Me</h3>
           <div class="row">
             <div class="col-lg-4 col-sm-3 col-xs-12">
-              <img src="./assets/images/ceo.png" class="img-responsive"
-              alt="about"/ style="width: 300px!important ;height: 300px;
+              <img src="./../assets/images/ceo.png" class="img-responsive"
+              alt="about" style="width: 300px!important ;height: 300px;
               object-fit: cover;">
             </div>
             <div class="col-lg-8 col-sm-9 col-xs-12">
@@ -429,29 +443,29 @@
                 (Indian classical music ). At age 13 , he heard first EDM track
                 (Martin Garrix - Animals) and then the journey began. Age 14 -
                 <span id="dots">...</span>
-                <span id="more">
-                  He made his first ever EDM Track Jack It Up to which he states
-                  "The Sounds Were Very Basic And Amateur HAHA(Laughs) . Don,t
-                  judge me on that " . He made Tracks After Track on genres Big
-                  Room, Future Bass, Progressive House Age 15 -One Of His
-                  Budding Tracks Got Placed As No.1 On Reverbnation Mumbai
-                  Charts . Age 16 - First Break Through Track Carnival Went
-                  Online and People Instantly Clicked with It and Were Jumping
-                  to It . He Played At One Of The Happening Scenes In Mumbai
-                  #NotronikBurnInGlow . It Was His Debut Set Remembering Which
-                  He States "The Crowd Was Epic , I was so Nervous My Hands Were
-                  Shaking Before Pressing the PLAY . I said to Myself that This
-                  Is It And Pressed PLAY And The Energy Was SO HIGH , It Was
-                  ABOVE THE ROOF". It was a successful event. Recent : He has
-                  had Some Amazing Tracks with Aalochak, Rezzr, Bebaak,
-                  RaveJaxx. Meri Kismat and Manchale has entered so Many hearts
-                  and at the same time Maahol is making people to bang their
-                  Bass Up the notch. His music is sure to make you Swing your
-                  BODY on the Kick and Bass. His biggest musical influences
-                  include Martin Garrix , @Tiësto, Julian Jordan , Jay Hardway ,
-                  ILLENIUM , Flume . Spread #LOVE and #PEACE.
-                </span>
+                <span id="more">...</span>
+                He made his first ever EDM Track Jack It Up to which he states
+                "The Sounds Were Very Basic And Amateur HAHA(Laughs) . Don,t
+                judge me on that " . He made Tracks After Track on genres Big
+                Room, Future Bass, Progressive House Age 15 -One Of His Budding
+                Tracks Got Placed As No.1 On Reverbnation Mumbai Charts . Age 16
+                - First Break Through Track Carnival Went Online and People
+                Instantly Clicked with It and Were Jumping to It . He Played At
+                One Of The Happening Scenes In Mumbai #NotronikBurnInGlow . It
+                Was His Debut Set Remembering Which He States "The Crowd Was
+                Epic , I was so Nervous My Hands Were Shaking Before Pressing
+                the PLAY . I said to Myself that This Is It And Pressed PLAY And
+                The Energy Was SO HIGH , It Was ABOVE THE ROOF". It was a
+                successful event. Recent : He has had Some Amazing Tracks with
+                Aalochak, Rezzr, Bebaak, RaveJaxx. Meri Kismat and Manchale has
+                entered so Many hearts and at the same time Maahol is making
+                people to bang their Bass Up the notch. His music is sure to
+                make you Swing your BODY on the Kick and Bass. His biggest
+                musical influences include Martin Garrix , @Tiësto, Julian
+                Jordan , Jay Hardway , ILLENIUM , Flume . Spread #LOVE and
+                #PEACE.
               </p>
+
               <button class="btn" onclick="myFunction()" id="myBtn">
                 Read more
               </button>
@@ -520,7 +534,7 @@
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3">
                 <h4>Get in touch or<br /><b>Just say Hello!</b></h4>
-                <form id="getInTouch" method="post">
+                <form id="getInTouch" method="get">
                   <input type="text" placeholder="Name" name="name" />
                   <input type="text" placeholder="Email" name="email" />
                   <textarea
@@ -559,24 +573,155 @@
     <div id="myCarousel" class="carousel slide hidden-xs">
       <div class="carousel-inner">
         <div class="active item">
-          <img src="./assets/images/back1.jpg" alt="" />
+          <img src="./../assets/images/back1.jpg" alt="" />
         </div>
-        <div class="item"><img src="./assets/images/back2.jpg" alt="" /></div>
-        <div class="item"><img src="./assets/images/back3.jpg" alt="" /></div>
+        <div class="item">
+          <img src="./../assets/images/back2.jpg" alt="" />
+        </div>
+        <div class="item">
+          <img src="./../assets/images/back3.jpg" alt="" />
+        </div>
       </div>
     </div>
 
-    <script
+    <div class="modal fade" id="blogdetail" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-hidden="true"
+          >
+            &times;
+          </button>
+
+          <div id="blog">
+            <h2 style="font-size: 1em">Upload your Track here</h2>
+
+            <form id="upload-album-form">
+              <div class="file-upload">
+                <button
+                  class="file-upload-btn uploadBtn"
+                  type="button"
+                  onclick="$('.file-upload-input').trigger( 'click' )"
+                >
+                  Add An Album Art
+                </button>
+
+                <div class="image-upload-wrap">
+                  <input
+                    class="file-upload-input"
+                    type="file"
+                    onchange="readURL(this);"
+                    accept="image/*"
+                    id="upload-img-btn"
+                  />
+                  <div class="drag-text">
+                    <h3>Select An Album Art</h3>
+                  </div>
+                </div>
+                <div class="file-upload-content">
+                  <img
+                    class="file-upload-image"
+                    id="album-cover-img"
+                    src="#"
+                    alt="your image"
+                  />
+                  <div class="image-title-wrap">
+                    <button
+                      type="button"
+                      onclick="removeUpload()"
+                      class="remove-image"
+                    >
+                      Remove <span class="image-title">Uploaded Image</span>
+                    </button>
+                  </div>
+                </div>
+                <h2 style="font-size: 20px !important">
+                  Insert the youtube url of your track
+                </h2>
+                <div class="col-lg-12 col-lg-offset-0">
+                  <div class="form-group">
+                    <span>Link</span>
+                    <input
+                      class="form-field"
+                      id="getLink"
+                      type="text"
+                      placeholder="domain.tld"
+                      name="utubeLink"
+                    />
+                    <button class="btn" id="urlLink">Verify ✔</button>
+                  </div>
+                  <iframe
+                    height="480"
+                    width="500"
+                    id="embed"
+                    style="display: none"
+                    src="#"
+                  >
+                  </iframe>
+                </div>
+                <h2 style="font-size: 20px !important">
+                  Description about your track
+                </h2>
+
+                <div class="col-lg-8 col-lg-offset-0">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="row">
+                        <div class="col-lg-8">
+                          <div class="form-group">
+                            <textarea
+                              class="form-field"
+                              type="text"
+                              style="height: 12em"
+                              placeholder="Description"
+                              name="description"
+                            >
+                            </textarea>
+                          </div>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="form-group">
+                            <button
+                              type="submit"
+                              class="btn btnUpload"
+                              style="background-color: #1fb264"
+                            >
+                              Upload Now
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <script
       src="http://code.jquery.com/jquery-1.7.1.min.js"
       type="text/javascript"
-    ></script>
+    ></script> -->
+    <!-- <script
+    class="jsbin"
+    src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
+  ></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script
-      src="./assets/bootstrap/js/bootstrap.js"
+      src="./../assets/bootstrap/js/bootstrap.js"
       type="text/javascript"
     ></script>
-    <script src="./assets/scripts/plugins.js" type="text/javascript"></script>
-    <script src="./assets/scripts/script.js" type="text/javascript"></script>
+    <script
+      src="./../assets/scripts/plugins.js"
+      type="text/javascript"
+    ></script>
+    <script src="./../assets/scripts/script.js" type="text/javascript"></script>
   </body>
   <script>
     function myFunction() {
@@ -624,9 +769,35 @@
       }
     }, 1000);
 
-    $(".heart.fa").click(function () {
-      console.log("aaaaa");
-      $(this).toggleClass("fa-heart fa-heart-o");
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $(".image-upload-wrap").hide();
+
+          $(".file-upload-image").attr("src", e.target.result);
+          $(".file-upload-content").show();
+
+          $(".image-title").html(input.files[0].name);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      } else {
+        removeUpload();
+      }
+    }
+
+    function removeUpload() {
+      $(".file-upload-input").replaceWith($(".file-upload-input").clone());
+      $(".file-upload-content").hide();
+      $(".image-upload-wrap").show();
+    }
+    $(".image-upload-wrap").bind("dragover", function () {
+      $(".image-upload-wrap").addClass("image-dropping");
+    });
+    $(".image-upload-wrap").bind("dragleave", function () {
+      $(".image-upload-wrap").removeClass("image-dropping");
     });
   </script>
 
@@ -636,7 +807,6 @@
   <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-storage.js"></script>
 
   <script>
-    // Your web app's Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyARB3u1mTEmX_dfCWOAqO5NZz7YgCcalsE",
       authDomain: "remixmeofficial-37597.firebaseapp.com",
@@ -645,9 +815,22 @@
       messagingSenderId: "871172186944",
       appId: "1:871172186944:web:d391edb271cf7f222b50a5",
     };
-    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
   </script>
-  <script src="./index1.js"></script>
-  <script src="./common1.js"></script>
+  <script src="./dashboard1.js"></script>
+  <script src="./../common1.js"></script>
+
+  <!-- facebook -->
+  <div id="fb-root"></div>
+  <script>
+    (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    })(document, "script", "facebook-jssdk");
+  </script>
 </html>
