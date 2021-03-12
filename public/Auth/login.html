@@ -6,25 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="viewport" content="width=device-width, user-scalable=no" />
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" href="../assets/css/signup.css">
-    <link rel = "icon" href =  
-    "../assets/images/logo.png" 
-        type = "image/x-icon"> 
+    <link rel="stylesheet" href="../assets/css/signup.css" />
+    <link rel="icon" href="../assets/images/logo.png" type="image/x-icon" />
     <!-- boostrap -->
-    <link rel = "icon" href =  
-    "assets/images/logo.png" 
-        type = "image/x-icon"> 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="icon" href="assets/images/logo.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="../assets/style.css" />
   </head>
   <style>
-      #about, .album, .blogevent ul li, h3, h4 {
-    visibility: visible;
-}  
- 
+    #about,
+    .album,
+    .blogevent ul li,
+    h3,
+    h4 {
+      visibility: visible;
+    }
   </style>
   <body>
-  
     <div class="navbar-wrapper">
       <div class="container">
         <div
@@ -76,52 +77,48 @@
     <!-- #Header Starts -->
 
     <!-- overlay -->
-    <br>
-    <div class="container overlay" style="margin-top:4%;padding: 20px !important;" >
-
-    <form>
-    <div class="row">
-        <Br>
+    <br />
+    <div
+      class="container overlay"
+      style="margin-top: 4%; padding: 20px !important"
+    >
+      <form id="signin-form">
+        <div class="row">
+          <br />
           <h1 style="text-align: center;">Namaste!  🙏</h1>
-        <div class="col-md-8" style="padding-left: 50px !important;">
+          <div class="col-md-8" style="padding-left: 50px !important;">
             <br><br><br><br><br>
-            <div class="input-group response input-group-icon" style="" >
-                <input type="email" placeholder="Email"/>
-                <div class="input-icon"><i class="fa fa-envelope"></i></div>
+            <div class="input-group  response input-group-icon">
+              <input type="email" placeholder="Email" name="email"/>
+              <div class="input-icon"><i class="fa fa-envelope"></i></div>
             </div>
-            <br> 
-            <div class="input-group response input-group-icon" >
-              <input type="password" placeholder="Password"/>
+            <br />
+            <div class="input-group  response input-group-icon">
+              <input type="password" placeholder="Password" name="password" />
               <div class="input-icon"><i class="fa fa-key"></i></div>
             </div>
-        
-            <br>
-          <button class="btn btn-warning responseBtn" style="" >Login Now</button>
-          <br>
-          <Br>
-          <h5 class="responseBtn">Dont have an account yet? <a href="signup.html"> Click here</a></h5>
-        </div>
-        <br>
-        <div class="col-md-4" style="">
+
+            <br />
+            <button class="btn btn-warning responseBtn" type="submit">Login Now</button>
+            <br />
+            <br />
+            <h5  class="responseBtn">
+              Dont have an account yet? <a href="./signup.html"> Click here</a>
+            </h5>
+          </div>
+          <br />
+          <div class="col-md-4" style="">
             <img class="img-responsive" src="../assets/images/logoWhite.png" style="">
-        </div>
+          </div>
 
+ 
+      </form>
+    </div>
 
-    </form>
-  </div>
-    <!-- overlay -->
-
-    <!-- Footer Starts -->
     <div id="footer">
       <div class="container">Copyright 2021 DJ SNASA ❤ By CrossHex.</div>
     </div>
-    <!-- # Footer Ends -->
 
-    <!-- background slider -->
-  
-    <!-- background slider -->
-
-    <!-- Modal -->
     <div class="modal fade" id="blogdetail" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -171,9 +168,7 @@
       </div>
       <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal -->
 
-    <!-- Modal -->
     <div class="modal fade" id="albumdetail" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -186,18 +181,14 @@
             src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/24314082&amp;theme_color=000000&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_artwork=false"
           ></iframe>
         </div>
-        <!-- /.modal-content -->
       </div>
-      <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal -->
 
     <script
       src="http://code.jquery.com/jquery-1.7.1.min.js"
       type="text/javascript"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- boostrap -->
     <script
       src="../assets/bootstrap/js/bootstrap.js"
       type="text/javascript"
@@ -222,4 +213,23 @@
       }
     }
   </script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyARB3u1mTEmX_dfCWOAqO5NZz7YgCcalsE",
+      authDomain: "remixmeofficial-37597.firebaseapp.com",
+      projectId: "remixmeofficial-37597",
+      storageBucket: "remixmeofficial-37597.appspot.com",
+      messagingSenderId: "871172186944",
+      appId: "1:871172186944:web:d391edb271cf7f222b50a5",
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <script src="./login1.js"></script>
 </html>

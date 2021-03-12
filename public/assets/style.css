@@ -338,7 +338,7 @@ button.close{position: absolute;right: 0;background: #FFF;width: 25px;height: 25
         width: 300px;height: 200px;object-fit: cover;
     }
     .voting{
-      margin-top: 38px;
+      margin-top: 20px;
     }
 
 }
@@ -465,4 +465,8 @@ button.close{position: absolute;right: 0;background: #FFF;width: 25px;height: 25
   .heart:hover{
     background-color: cadetblue !important;
     color: orange !important;
+  }
+  .hoverIcon:hover{
+    color: white !important;
+    
   }
