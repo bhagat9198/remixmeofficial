@@ -54,7 +54,7 @@ const displayLeaderBoard = () => {
         rankStatus = `<i style="color: green" class="fa fa-arrow-down">${dec}</i>`;
       }
     }
-
+    
     li += `
     <li style="background-color: #420202a2">
       <div class="row">
@@ -68,7 +68,7 @@ const displayLeaderBoard = () => {
         <div class="col-xs-12 col-sm-2 col-lg-3">
           <a href="#"
             ><img
-              src="${album.img.url}
+              src="${album.img.url}"
               class="img-responsive resImg"
               alt="${album.userName} remixe"
           /></a>
