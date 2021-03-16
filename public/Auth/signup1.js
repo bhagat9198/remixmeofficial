@@ -34,7 +34,8 @@ const createAccountForm = (e) => {
       },
       country: country,
       logInHistory: [],
-      albumUploaded: false
+      albumUploaded: false,
+      votes: []
     };
 
     auth

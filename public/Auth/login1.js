@@ -7,24 +7,23 @@ let USER_ID = false;
 auth.onAuthStateChanged(async (user) => {
   if (user) {
     if (USER_ID) {
-      let dbRef = await db.collection("users").doc(USER_ID);
-      dbRef
-        .get()
-        .then(async (snap) => {
-          let snapData = snap.data();
-          console.log(snapData);
-          console.log(snapData.logInHistory, typeof snapData.logInHistory);
-          snapData.logInHistory.push(new Date().valueOf().toString());
-          console.log(snapData.logInHistory);
-          await dbRef.update(snapData);
-          window.location.replace("./../Dashbord/dashboard.html");
-        })
-        .catch((error) => {
-          let errorMessage = error.message;
-          console.log(errorMessage);
-        });
+      // let dbRef = await db.collection("users").doc(USER_ID);
+      // dbRef
+      //   .get()
+      //   .then(async (snap) => {
+      //     let snapData = snap.data();
+      //     console.log(snapData);
+      //     console.log(snapData.logInHistory, typeof snapData.logInHistory);
+      //     snapData.logInHistory.push(new Date().valueOf().toString());
+      //     console.log(snapData.logInHistory);
+      //     await dbRef.update(snapData);
+      //     window.location.replace("./../Dashbord/dashboard.html");
+      //   })
+      //   .catch((error) => {
+      //     let errorMessage = error.message;
+      //     console.log(errorMessage);
+      //   });
     } else {
-      console.log("aaaaaa");
       window.history.back();
     }
   }
