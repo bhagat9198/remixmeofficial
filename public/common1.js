@@ -96,8 +96,6 @@ const displayLeaderBoard = () => {
       }
     }
 
-    
-
     li += `
     <li style="background-color: #420202a2">
       <div class="row">
@@ -111,8 +109,11 @@ const displayLeaderBoard = () => {
         </div>
         </a>
         <div class="col-xs-12 col-sm-2 col-lg-3">
+
           <a href="${albumUrl}">
             <img
+
+
               src="${album.img.url}"
               class="img-responsive resImg"
               alt="${album.userName} remixe"
@@ -169,13 +170,14 @@ const displayLeaderBoard = () => {
           <span style="visibility:hidden" id="socialIcons${index}">
           <br>
 
-        
+
           <a target="_blank" href="https://api.whatsapp.com/send?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${album.userDocId}" data-action="share/whatsapp/share"> <i  style="color:green" class="hoverIcon fa fa-whatsapp"></i> </a>
         
           <a target="_blank" href="https://twitter.com/intent/tweet?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${album.userDocId}"><i  style="color:blue " class="hoverIcon fa fa-twitter"></i> </a>
           <a target="_blank" onclick="copyWebLink()" data-docid="${album.userDocId}" style="cursor:pointer"><i  style="color:black "  class="hoverIcon fa fa-link"></i> </a>
           <div class="fb-share-button"  id="fb${index}" style="visibility:hidden" 
           data-href="https://remixmeofficial.web.app/Dashboard/user.html?album=${album.userDocId}" 
+
           data-layout="button_count">
           </div>
           </span>
