@@ -84,6 +84,8 @@ db.collection("comments")
   });
 
 let allCommentsHolderHTML = document.querySelector("#all-comments-holder");
+let totalCommentsHTML = document.querySelector('#total-comments');
+
 const displayComments = () => {
   let li = "";
   ALL_COMMENTS.map((c) => {
@@ -112,6 +114,7 @@ const displayComments = () => {
     `;
   });
   allCommentsHolderHTML.innerHTML = li;
+  totalCommentsHTML.innerHTML = ALL_COMMENTS.length ? ALL_COMMENTS.length : `No Comments Till Now.`;
 };
 
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
