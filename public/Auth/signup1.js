@@ -9,10 +9,12 @@ if (currentSignedUser) {
 }
 
 const createAccountForm = (e) => {
+  document.getElementById("loader").style.display="inline-block";
   e.preventDefault();
   const password = createAccountFormHTML["password"].value;
   const cpassword = createAccountFormHTML["cpassword"].value;
   if (password === cpassword) {
+    document.getElementById("loader").style.display="none";
     const userIs = createAccountFormHTML["userIs"].value;
     const name = createAccountFormHTML["name"].value;
     const userName = createAccountFormHTML["userName"].value;
@@ -48,11 +50,14 @@ const createAccountForm = (e) => {
       data.logInHistory.push(new Date().valueOf().toString());
       await db.collection('users').doc(userId).set(data);
       console.log(data, typeof data.logInHistory);
+
+      document.getElementById("loader").style.display="none";
       window.location.replace('./../Dashbord/dashboard.html');
     })
     .catch((error) => {
       let errorCode = error.code;
       let errorMessage = error.message;
+      document.getElementById("loader").style.display="none";
       console.log(error, errorCode, errorMessage);
     });
   }

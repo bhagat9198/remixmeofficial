@@ -57,6 +57,7 @@ const displayLeaderBoard = () => {
         font-size: 15px;
         border: 1px solid white;
         margin-bottom: 2%;
+        width:100px !important;
       "
       >&nbsp;Vote
     </i>`;
@@ -71,9 +72,11 @@ const displayLeaderBoard = () => {
       }
     }
 
-    let albumUrl = `./Dashbord/user.html?album=${album.userDocId}`;
+    let albumUrl = `user.html?album=${album.userDocId}`;
+  
 
     if(UDATA) {
+    
       albumUrl = `./user.html?album=${album.userDocId}`;
       for(let i = 0; i < UDATA.votes.length; i++) {
         if(UDATA.votes[i] === album.userDocId) {
@@ -95,7 +98,11 @@ const displayLeaderBoard = () => {
         }
       }
     }
-
+    if(album.img.url =="none"){
+      
+      album.img.url = "../assets/images/common.png"
+    }
+   
     li += `
     <li style="background-color: #420202a2">
       <div class="row">
@@ -162,6 +169,7 @@ const displayLeaderBoard = () => {
                 font-size: 15px;
                 border: 1px solid white;
                 margin-bottom: 2%;
+                width:100px !important;
               "
           
               >&nbsp;Share</i

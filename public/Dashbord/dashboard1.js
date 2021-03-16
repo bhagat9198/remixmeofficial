@@ -78,99 +78,173 @@ urlLinkHTML.addEventListener("click", urlLinkVerify);
 const uploadAlbumFormHTML = document.querySelector("#upload-album-form");
 
 const uploadAlbumFormSubmit = async(e) => {
+
+  document.getElementById("loader").style.display="inline-block";
   e.preventDefault();
-  console.log('hey');
-  console.log(UDATA);
-  if (!UDATA.albumUploaded) {
-    if (IMAGE && VERIFY_LINK) {
-      let imgName = `${new Date().valueOf()}__${Math.random()}__${IMAGE.name}`;
-      let imgLink;
-      await fStorage
-        .ref(`album-pics/${imgName}`)
-        .put(IMAGE)
-        .then(() => {
-          // image Upload
-        })
-        .catch((error) => {
-          let errorMessage = error.message;
-          // display error message
-        });
-
-      await fStorage
-        .ref(`album-pics/${imgName}`)
-        .getDownloadURL()
-        .then((url) => {
-          console.log(url);
-          imgLink = url;
-        })
-        .catch((error) => {
-          let errorMessage = error.message;
-          // display error message
-        });
-
-      let description = uploadAlbumFormHTML["description"].value;
-      let utubeLink = uploadAlbumFormHTML["utubeLink"].value;
-
-      let album_data = {
-        description: description,
-        link: utubeLink,
-        img: {
-          name: imgName,
-          url: imgLink,
-        },
-        uploadedAt: new Date().valueOf()
-      };
-
-      let indexOfAlbum = -1;
-      let allAlbumRef = db.collection("miscellaneous").doc("allAlbums");
-      allAlbumRef
-        .get()
-        .then((allAlbumSnap) => {
-          let allAlbumSnapData = allAlbumSnap.data();
-          allAlbumSnapData.allAlbums.sort(function(a,b) {
-            return b.votes - a.votes;
+  setTimeout(async function(){
+    if (!UDATA.albumUploaded) {
+      document.getElementById("loader").style.display="inline-block";
+      if (IMAGE ) {
+        let imgName = `${new Date().valueOf()}__${Math.random()}__${IMAGE.name}`;
+        let imgLink;
+        await fStorage
+          .ref(`album-pics/${imgName}`)
+          .put(IMAGE)
+          .then(() => {
+            // image Upload
+            $('#exampleModal').modal("show");
+            document.getElementById("loader").style.display="none";
+          })
+          .catch((error) => {
+            let errorMessage = error.message;
+            // display error message
           });
-          let rank = getRank(allAlbumSnapData.allAlbums);
-
-          allAlbumSnapData.allAlbums.push({
-            ...album_data,
-            votes: 0,
-            maxRank: rank,
-            currentRank: rank,
-            name: UDATA.name,
-            userName: UDATA.userName,
-            userDocId: UDATA.docId,
+  
+        await fStorage
+          .ref(`album-pics/${imgName}`)
+          .getDownloadURL()
+          .then((url) => {
+            console.log(url);
+            imgLink = url;
+          })
+          .catch((error) => {
+            let errorMessage = error.message;
+            // display error message
           });
-          indexOfAlbum = allAlbumSnapData.allAlbums.length - 1;
-          return allAlbumRef.update(allAlbumSnapData);
-        })
-        .then(() => {
-          return U_REF.get();
-        })
-        .then((snap) => {
-          let snapData = snap.data();
-          snapData.albumUploaded = true;
-          snapData.album = album_data;
-          snapData.album.indexOfAlbum = indexOfAlbum;
-          // console.log(snapData);
-          return U_REF.update(snapData);
-        })
-        .then(() => {
-          console.log("all done");
-          $('#blogdetail').modal('hide');
-        })
-        .catch((error) => {
-          let errorMessage = error.message;
-          console.log(errorMessage);
-          // display error, album didnt not get upladed
-        });
+  
+        let description = uploadAlbumFormHTML["description"].value;
+        let utubeLink = uploadAlbumFormHTML["utubeLink"].value;
+  
+        let album_data = {
+          description: description,
+          link: utubeLink,
+          img: {
+            name: imgName,
+            url: imgLink,
+          },
+          uploadedAt: new Date().valueOf()
+        };
+  
+        let indexOfAlbum = -1;
+        let allAlbumRef = db.collection("miscellaneous").doc("allAlbums");
+        allAlbumRef
+          .get()
+          .then((allAlbumSnap) => {
+            let allAlbumSnapData = allAlbumSnap.data();
+            allAlbumSnapData.allAlbums.sort(function(a,b) {
+              return b.votes - a.votes;
+            });
+            let rank = getRank(allAlbumSnapData.allAlbums);
+  
+            allAlbumSnapData.allAlbums.push({
+              ...album_data,
+              votes: 0,
+              maxRank: rank,
+              currentRank: rank,
+              name: UDATA.name,
+              userName: UDATA.userName,
+              userDocId: UDATA.docId,
+            });
+            indexOfAlbum = allAlbumSnapData.allAlbums.length - 1;
+            return allAlbumRef.update(allAlbumSnapData);
+          })
+          .then(() => {
+            return U_REF.get();
+          })
+          .then((snap) => {
+            let snapData = snap.data();
+            snapData.albumUploaded = true;
+            snapData.album = album_data;
+            snapData.album.indexOfAlbum = indexOfAlbum;
+            // console.log(snapData);
+            return U_REF.update(snapData);
+          })
+          .then(() => {
+            console.log("all done");
+            $('#blogdetail').modal('hide');
+          })
+          .catch((error) => {
+            let errorMessage = error.message;
+            console.log(errorMessage);
+            // display error, album didnt not get upladed
+          });
+      } else {
+  
+        let description = uploadAlbumFormHTML["description"].value;
+        let utubeLink = uploadAlbumFormHTML["utubeLink"].value;
+        if(utubeLink){
+          
+          document.getElementById("loader").style.display="inline-block";
+          let album_data = {
+            description: description,
+            link: utubeLink,
+            img: {
+              name: "none",
+              url: "none",
+            },
+            uploadedAt: new Date().valueOf()
+          };
+    
+          let indexOfAlbum = -1;
+          let allAlbumRef = db.collection("miscellaneous").doc("allAlbums");
+          allAlbumRef
+            .get()
+            .then((allAlbumSnap) => {
+              let allAlbumSnapData = allAlbumSnap.data();
+              allAlbumSnapData.allAlbums.sort(function(a,b) {
+                return b.votes - a.votes;
+              });
+              let rank = getRank(allAlbumSnapData.allAlbums);
+    
+              allAlbumSnapData.allAlbums.push({
+                ...album_data,
+                votes: 0,
+                maxRank: rank,
+                currentRank: rank,
+                name: UDATA.name,
+                userName: UDATA.userName,
+                userDocId: UDATA.docId,
+              });
+              indexOfAlbum = allAlbumSnapData.allAlbums.length - 1;
+              return allAlbumRef.update(allAlbumSnapData);
+            })
+            .then(() => {
+              return U_REF.get();
+            })
+            .then((snap) => {
+              let snapData = snap.data();
+              snapData.albumUploaded = true;
+              snapData.album = album_data;
+              snapData.album.indexOfAlbum = indexOfAlbum;
+              // console.log(snapData);
+              return U_REF.update(snapData);
+            })
+            .then(() => {
+              console.log("all done");
+              $('#blogdetail').modal('hide');
+            })
+            .catch((error) => {
+              let errorMessage = error.message;
+              console.log(errorMessage);
+              // display error, album didnt not get upladed
+            });
+            $('#exampleModal').modal("show");
+              document.getElementById("loader").style.display="none";
+        }else{
+          alert("Please insert your youtube link")
+          document.getElementById("loader").style.display="none";
+        }
+     
+      }
+  
     } else {
-      // error, form cant be submitted..
+      // error, album already uploaded
+   
+      alert("You have already uploaded a track ")
+      document.getElementById("loader").style.display="none";
     }
-  } else {
-    // error, album already uploaded
-    console.log("cant upload more");
-  }
+  },1000)
+
 };
 
 uploadAlbumFormHTML.addEventListener("submit", uploadAlbumFormSubmit);

@@ -91,23 +91,23 @@ const displayComments = () => {
   ALL_COMMENTS.map((c) => {
     let d = new Date(c.commentAt).toString();
     d = d.substring(0, 24);
+   
     li += `
     <li class="list-group-item" >
       <div class="row">
-        <div class="col-xs-2 col-md-1">
-          <img
-            src="http://placehold.it/80"
-            class="img-circle img-responsive"
-            alt=""
-          />
-        </div>
-        <div class="col-xs-10 col-md-11">
-          <div>
-            <div class="mic-info">
-              By: ${c.byName} ${d}
+    
+        <div class="col-xs-12 col-md-12" style="margin-left:-1% !important">
+    
+            <div class="col-lg-1 mic-info">
+               ${c.byName} :
             </div>
-          </div>
-          <div class="comment-text">${c.comment}</div>
+            
+            <div class="col-lg-6 comment-text" style="float:left !important" >${c.comment}</div>
+            <div class="col-lg-2 mico" style="float:right">
+             ${d}
+            </div>
+   
+         
         </div>
       </div>
     </li>

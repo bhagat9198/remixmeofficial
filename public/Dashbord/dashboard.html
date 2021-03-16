@@ -26,11 +26,11 @@
       width: 100%;
       margin: 0;
       color: #fff;
-      background: #1fb264;
+      background: orange;
       border: none;
       padding: 10px;
       border-radius: 4px;
-      border-bottom: 4px solid #15824b;
+      border-bottom: 4px solid orange;
       transition: all 0.2s ease;
       outline: none;
       text-transform: uppercase;
@@ -38,7 +38,7 @@
     }
 
     .file-upload-btn:hover {
-      background: #1aa059;
+      background: orange;
       color: #ffffff;
       transition: all 0.2s ease;
       cursor: pointer;
@@ -67,14 +67,14 @@
 
     .image-upload-wrap {
       margin-top: 20px;
-      border: 4px dashed #1fb264;
+      /* border: 4px dashed orange; */
       position: relative;
     }
 
     .image-dropping,
     .image-upload-wrap:hover {
-      background-color: #1fb264;
-      border: 4px dashed #ffffff;
+      background-color: none;
+      /* border: 4px dashed #ffffff; */
     }
 
     .image-title-wrap {
@@ -89,7 +89,7 @@
     .drag-text h3 {
       font-weight: 100;
       text-transform: uppercase;
-      color: #15824b;
+      color: black;
       padding: 60px 0;
     }
 
@@ -337,7 +337,7 @@
       </div>
       <div class="blockblack">
         <h3>
-          <span class="glyphicon glyphicon-calendar"></span> #Leader-Board
+          <span class="fa fa-trophy"></span> Leader-Board
         </h3>
 
         <div id="blogevents" class="blogevent">
@@ -514,7 +514,7 @@
               <iframe
                 class="iframe"
                 src="https://open.spotify.com/embed/artist/0sGlHhb62jY1XBjDWCntQl"
-                width="330"
+                width="337"
                 height="380"
                 frameborder="0"
                 allowtransparency="true"
@@ -523,7 +523,7 @@
               <iframe
                 class="iframe"
                 src="https://open.spotify.com/embed/playlist/332Wvn6EcGo3Bc2izhnjWk"
-                width="330"
+                width="337"
                 height="380"
                 frameborder="0"
                 allowtransparency="true"
@@ -532,7 +532,7 @@
               <iframe
                 class="iframe"
                 src="https://open.spotify.com/embed/playlist/6Wfi6mbQXQXRclBpbxFgob"
-                width="330"
+                width="337"
                 height="380"
                 frameborder="0"
                 allowtransparency="true"
@@ -541,7 +541,7 @@
               <iframe
                 class="iframe"
                 src="https://open.spotify.com/embed/playlist/2oLVcDsc5W5jGGaU692ciX"
-                width="330"
+                width="337"
                 height="380"
                 frameborder="0"
                 allowtransparency="true"
@@ -564,7 +564,7 @@
                     placeholder="Message"
                     name="message"
                   ></textarea>
-                  <button type="submit" class="btn btn-warning bgcolor">
+                  <button type="submit" style="background-color: red !important;" class="btn btn-warning bgcolor">
                     Send
                   </button>
                 </form>
@@ -587,7 +587,28 @@
         </div>
       </div>
     </div>
-
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel" style="color: black;font-weight: 700;">RemixMe </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p style="font-size: 25px !important; text-align: center;font-weight: 800;">
+              <i class="fa fa-check" style="color: green;"></i>  Your track have been uploaded successfully . 
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <div id="footer">
       <div class="container">Copyright 2021 DJ SNASA. ❤ By CrossHex</div>
     </div>
@@ -640,7 +661,7 @@
                     id="upload-img-btn"
                   />
                   <div class="drag-text">
-                    <h3 style="text-transform: none;">Select A PNG Album Art<br> <span style="color: red;font-size: 16px;">(Resolution - 450px X 450px & Size <= 350kb )</span></h3>
+                    <h5 style="text-transform: none; color: black;">Select A PNG Album Art<br> <span style="color: red;font-size: 16px;">(Resolution - 450px X 450px & Size <= 350kb )</span></h5>
                   </div>
                 </div>
                 <div class="file-upload-content">
@@ -697,22 +718,26 @@
                             <textarea
                               class="form-field"
                               type="text"
-                              style="height: 12em"
+                              style="height: 12em;color:black"
                               placeholder="Description"
                               name="description"
                             >
                             </textarea>
                           </div>
                         </div>
+                   
                         <div class="col-lg-4">
+                          
                           <div class="form-group">
+                            
                             <button
                               type="submit"
                               class="btn btnUpload"
-                              style="background-color: #1fb264"
+                              style="background-color: orange;display: flex;"
                             >
-                              Upload Now
+                              Upload Now &nbsp; <div class="loader" id="loader" style="display: none;"></div>
                             </button>
+                            
                           </div>
                         </div>
                       </div>
@@ -725,6 +750,7 @@
         </div>
       </div>
     </div>
+
 
     <!-- <script
       src="http://code.jquery.com/jquery-1.7.1.min.js"
