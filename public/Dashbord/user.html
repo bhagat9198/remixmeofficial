@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>DJ Snasa | Official Website</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link
+    href="https://fonts.googleapis.com/css?family=RobotoDraft"
+    rel="stylesheet"
+    type="text/css"
+  />
+  <link
+    href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+    rel="stylesheet"
+    id="bootstrap-css"
+  />
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  /><style>
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-family: "RobotoDraft", "Roboto", sans-serif;
+    }
+    .w3-bar-block .w3-bar-item {
+      padding: 16px;
+    }
+    body {
+      background-color: black;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      color: white;
+    }
+    .widget .panel-body {
+      padding: 0px;
+    }
+    .widget .list-group {
+      margin-bottom: 0;
+    }
+    .widget .panel-title {
+      display: inline;
+    }
+    .widget .label-info {
+      float: right;
+    }
+    .widget li.list-group-item {
+      background-color: black;
+      border-radius: 0;
+      border: 0;
+      border-top: 1px solid #ddd;
+    }
+    .widget li.list-group-item:hover {
+      background-color: rgba(86, 61, 124, 0.1);
+    }
+    .widget .mic-info {
+      color: white;
+      font-size: 11px;
+    }
+    .widget .action {
+      margin-top: 5px;
+    }
+    .widget .comment-text {
+      font-size: 12px;
+      color: white;
+    }
+    .widget .btn-block {
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+    }
+
+    @media (max-width: 700px) {
+      .iframeRes {
+        width: 100%;
+        height: 200px;
+      }
+    }
+  </style>
+  <body>
+    <div
+      class="w3-overlay w3-hide-large w3-animate-opacity"
+      onclick="w3_close()"
+      style="cursor: pointer"
+      title="Close Sidemenu"
+      id="myOverlay"
+    ></div>
+
+    <div class="w3-main" style="margin-left: 0px">
+      <i
+        class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top"
+        onclick="w3_open()"
+      ></i>
+      <a
+        href="javascript:void(0)"
+        class="w3-hide-large w3-red w3-button w3-right w3-margin-top w3-margin-right"
+        onclick="document.getElementById('id01').style.display='block'"
+        ><i class="fa fa-pencil"></i
+      ></a>
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="row">
+            <div class="col-lg-6" style="padding: 30px; margin-left: 5%">
+              <img
+                id="album-pic"
+                class="w3-round w3-animate-top"
+                src=""
+                style="width: 80%"
+              />
+            </div>
+            <div class="col-lg-4" style="padding: 60px">
+              <iframe
+                id="utube-player"
+                class="iframeRes"
+                width="860"
+                height="215"
+                src=""
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="Borge" class="w3-container person">
+        <br />
+
+        <h5 class="w3-opacity">Track Name: <span id="album-name"></span></h5>
+        <h4><i class="fa fa-clock-o"></i> From <span id="ablum-username"></span></h4>
+
+        <hr />
+        <div id="album-description"> </div>
+        <p>Best Regards, <br /><span id="album-sign"></span></p>
+      </div>
+    </div>
+    <div
+      class="contain"
+      style="
+        width: 100% !important;
+        padding: 20px;
+        background-color: black !important ;
+      "
+    >
+      <div class="row">
+        <div class="panel panel-default widget">
+          <div class="panel-heading" style="background-color: black">
+            <span class="glyphicon glyphicon-comment"></span>
+            <h3 class="panel-title">Recent Comments</h3>
+            <span class="label label-info"> 78</span>
+          </div>
+          <div class="input-group input-group-sm chatMessageControls">
+            <span class="input-group-addon" id="sizing-addon3">Comment</span>
+            <input
+              id="comment-box"
+              type="text"
+              class="form-control"
+              placeholder="Type your message here.."
+              aria-describedby="sizing-addon3"
+              style="height: 4em !important"
+            />
+            <span class="input-group-btn">
+              <button
+                id="sendMessageButton"
+                class="btn btn-primary"
+                type="button"
+                style="height: 4em"
+              >
+                <i class="fa fa-send"></i>&nbsp; POST
+              </button>
+            </span>
+            <span class="input-group-btn"> </span>
+          </div>
+          <div class="panel-body">
+            <ul class="list-group" id="all-comments-holder">
+              <!-- <li class="list-group-item" >
+                <div class="row">
+                  <div class="col-xs-2 col-md-1">
+                    <img
+                      src="http://placehold.it/80"
+                      class="img-circle img-responsive"
+                      alt=""
+                    />
+                  </div>
+                  <div class="col-xs-10 col-md-11">
+                    <div>
+                      <div class="mic-info">
+                        By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
+                      </div>
+                    </div>
+                    <div class="comment-text">Awesome design</div>
+                  </div>
+                </div>
+              </li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var openInbox = document.getElementById("myBtn");
+      openInbox.click();
+
+      function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("myOverlay").style.display = "block";
+      }
+
+      function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("myOverlay").style.display = "none";
+      }
+
+      function myFunc(id) {
+        var x = document.getElementById(id);
+        if (x.className.indexOf("w3-show") == -1) {
+          x.className += " w3-show";
+          x.previousElementSibling.className += " w3-red";
+        } else {
+          x.className = x.className.replace(" w3-show", "");
+          x.previousElementSibling.className = x.previousElementSibling.className.replace(
+            " w3-red",
+            ""
+          );
+        }
+      }
+
+      openMail("Borge");
+      function openMail(personName) {
+        var i;
+        var x = document.getElementsByClassName("person");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        x = document.getElementsByClassName("test");
+        for (i = 0; i < x.length; i++) {
+          x[i].className = x[i].className.replace(" w3-light-grey", "");
+        }
+        document.getElementById(personName).style.display = "block";
+        event.currentTarget.className += " w3-light-grey";
+      }
+    </script>
+
+    <script>
+      var openTab = document.getElementById("firstTab");
+      openTab.click();
+    </script>
+  </body>
+
+  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-storage.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyARB3u1mTEmX_dfCWOAqO5NZz7YgCcalsE",
+      authDomain: "remixmeofficial-37597.firebaseapp.com",
+      projectId: "remixmeofficial-37597",
+      storageBucket: "remixmeofficial-37597.appspot.com",
+      messagingSenderId: "871172186944",
+      appId: "1:871172186944:web:d391edb271cf7f222b50a5",
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <script src="./user1.js"></script>
+</html>

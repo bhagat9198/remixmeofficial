@@ -12,6 +12,7 @@ auth.onAuthStateChanged((user) => {
     U_REF = db.collection("users").doc(user.uid);
     U_REF.get().then((snap) => {
       UDATA = { ...snap.data(), docId: user.uid };
+      displayLeaderBoard();
     });
   } else {
     window.location.replace("./../index.html");
@@ -117,6 +118,7 @@ const uploadAlbumFormSubmit = async(e) => {
           name: imgName,
           url: imgLink,
         },
+        uploadedAt: new Date().valueOf()
       };
 
       let indexOfAlbum = -1;
@@ -125,7 +127,6 @@ const uploadAlbumFormSubmit = async(e) => {
         .get()
         .then((allAlbumSnap) => {
           let allAlbumSnapData = allAlbumSnap.data();
-          console.log(allAlbumSnapData.allAlbums, typeof allAlbumSnapData);
           allAlbumSnapData.allAlbums.sort(function(a,b) {
             return b.votes - a.votes;
           });
@@ -141,7 +142,6 @@ const uploadAlbumFormSubmit = async(e) => {
             userDocId: UDATA.docId,
           });
           indexOfAlbum = allAlbumSnapData.allAlbums.length - 1;
-          console.log("array dtyukfukt");
           return allAlbumRef.update(allAlbumSnapData);
         })
         .then(() => {
@@ -153,11 +153,11 @@ const uploadAlbumFormSubmit = async(e) => {
           snapData.album = album_data;
           snapData.album.indexOfAlbum = indexOfAlbum;
           // console.log(snapData);
-          console.log("user gfuykfdtyj");
           return U_REF.update(snapData);
         })
         .then(() => {
           console.log("all done");
+          $('#blogdetail').modal('hide');
         })
         .catch((error) => {
           let errorMessage = error.message;
@@ -165,7 +165,7 @@ const uploadAlbumFormSubmit = async(e) => {
           // display error, album didnt not get upladed
         });
     } else {
-      // error, form cant be submitted
+      // error, form cant be submitted..
     }
   } else {
     // error, album already uploaded

@@ -7,13 +7,11 @@ db.collection("miscellaneous")
   .onSnapshot((snap) => {
     ALL_ALBUMS = [];
     let snapData = snap.data();
-    console.log(snapData.allAlbums);
     ALL_ALBUMS = snapData.allAlbums;
-    console.log(ALL_ALBUMS, typeof ALL_ALBUMS);
-    if (typeof ALL_ALBUMS !== "undefined") {
+    // if (typeof ALL_ALBUMS !== "undefined" && ALL_ALBUMS.length > 0) {
       // sortAlbums();
       displayLeaderBoard();
-    }
+    // }
   });
 
 const sortAlbums = () => {
@@ -26,6 +24,9 @@ const sortAlbums = () => {
 let allAlbumsListHTML = document.querySelector("#all-albums-list");
 
 const displayLeaderBoard = () => {
+  if(ALL_ALBUMS.length === 0) {
+    return;
+  } 
   // console.log(ALL_ALBUMS);
   let li = "";
   let rank = 1;
@@ -45,19 +46,62 @@ const displayLeaderBoard = () => {
     }
 
     let rankStatus = "";
+    let voteStatus = `
+    <i data-index="${index}" onclick="voteClick(event, this)"
+      class="heart fa fa-heart-o "
+      style="
+        background-color: transparent !important ;
+        padding: 12px;
+        border-radius: 0px;
+        cursor: pointer;
+        font-size: 15px;
+        border: 1px solid white;
+        margin-bottom: 2%;
+      "
+      >&nbsp;Vote
+    </i>`;
+
     if (inc) {
       rankStatus = `<i style="color: green" class="fa fa-arrow-up">${inc}</i>`;
     } else {
       if (dec === 0) {
-        rankStatus = `<i style="color: green" class="fa fa-arrow-right">${dec}</i>`;
+        rankStatus = `<i style="color: gray" class="fa fa-arrow-right">${dec}</i>`;
       } else {
-        rankStatus = `<i style="color: green" class="fa fa-arrow-down">${dec}</i>`;
+        rankStatus = `<i style="color: red" class="fa fa-arrow-down">${dec}</i>`;
       }
     }
 
+    let albumUrl = `./Dashbord/user.html?album=${album.userDocId}`;
+
+    if(UDATA) {
+      albumUrl = `./user.html?album=${album.userDocId}`;
+      for(let i = 0; i < UDATA.votes.length; i++) {
+        if(UDATA.votes[i] === album.userDocId) {
+          voteStatus = `
+          <i data-index="${index}" onclick="voteClick(event, this)"
+            class="heart fa fa-heart"
+            style="
+              background-color: transparent !important ;
+              padding: 12px;
+              border-radius: 0px;
+              cursor: pointer;
+              font-size: 15px;
+              border: 1px solid white;
+              margin-bottom: 2%;
+            "
+            >&nbsp;Vote
+          </i>`;
+          break;
+        }
+      }
+    }
+
+    
+
     li += `
-    <li style="background-color: #420202">
+    <li style="background-color: #420202a2">
       <div class="row">
+        <a href="${albumUrl}">
         <div class="col-xs-12 col-sm-2 col-lg-2 date">
           <h1>#${rank}</h1>
           <span>${album.userName}</span>
@@ -65,10 +109,11 @@ const displayLeaderBoard = () => {
             ${rankStatus}
           </h5>
         </div>
+        </a>
         <div class="col-xs-12 col-sm-2 col-lg-3">
-          <a href="#"
-            ><img
-              src="${album.img.url}
+          <a href="${albumUrl}">
+            <img
+              src="${album.img.url}"
               class="img-responsive resImg"
               alt="${album.userName} remixe"
           /></a>
@@ -76,11 +121,9 @@ const displayLeaderBoard = () => {
         <div class="col-xs-12 col-sm-4 col-lg-4">
           <h5>
             <a
-              href="#"
-              data-toggle="modal"
-              data-target="#blogdetail"
-              >Manchale[ ${album.name} Remix]</a
-            >
+              href="${albumUrl}"
+              >Manchale[ ${album.name} Remix]
+            </a>
           </h5>
           <p>
             ${album.description}
@@ -97,27 +140,17 @@ const displayLeaderBoard = () => {
           ></iframe>
         </div>
         <div
-          class="col-xs-12 col-sm-3 col-lg-3 date"
+          class="voting col-xs-12 col-sm-3 col-lg-3 date"
           style="background-color: transparent !important"
         >
           <h2 >
             <div>
-              <i data-index="${index}" onclick="voteClick(event, this)"
-                class="heart fa fa-heart-o "
-                style="
-                  background-color: transparent !important ;
-                  padding: 12px;
-                  border-radius: 0px;
-                  cursor: pointer;
-                  font-size: 15px;
-                  border: 1px solid white;
-                  margin-bottom: 2%;
-                "
-                >&nbsp;Vote
-              </i>
+              ${voteStatus}
             </div>
           </h2>
           <span
+          id="shareMe${index}"
+          onclick=showIcon("shareMe${index}",${index})
             ><i
               class="star fa fa-share"
               style="
@@ -129,18 +162,22 @@ const displayLeaderBoard = () => {
                 border: 1px solid white;
                 margin-bottom: 2%;
               "
+          
               >&nbsp;Share</i
             ></span
           >
-          <span>
-          <a href="https://api.whatsapp.com/send?text=https://remixmeofficial.web.app#blockblack" data-action="share/whatsapp/share">whats app</a>
-          <div class="fb-share-button" 
-          data-href="https://remixmeofficial.web.app#blockblack" 
+          <span style="visibility:hidden" id="socialIcons${index}">
+          <br>
+
+        
+          <a target="_blank" href="https://api.whatsapp.com/send?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${album.userDocId}" data-action="share/whatsapp/share"> <i  style="color:green" class="hoverIcon fa fa-whatsapp"></i> </a>
+        
+          <a target="_blank" href="https://twitter.com/intent/tweet?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${album.userDocId}"><i  style="color:blue " class="hoverIcon fa fa-twitter"></i> </a>
+          <a target="_blank" onclick="copyWebLink()" data-docid="${album.userDocId}" style="cursor:pointer"><i  style="color:black "  class="hoverIcon fa fa-link"></i> </a>
+          <div class="fb-share-button"  id="fb${index}" style="visibility:hidden" 
+          data-href="https://remixmeofficial.web.app/Dashboard/user.html?album=${album.userDocId}" 
           data-layout="button_count">
           </div>
-          <a href="https://twitter.com/intent/tweet?text=https://remixmeofficial.web.app#blockblack">twitter</a>
-          <a onclick="copyWebLink()">link</a>
-          
           </span>
         </div>
       </div>
@@ -148,21 +185,40 @@ const displayLeaderBoard = () => {
     <br />
     `;
   });
+
+
   allAlbumsListHTML.innerHTML = "";
   allAlbumsListHTML.innerHTML += li;
 };
+var counter=0;
+var count=0
+function showIcon(id,index){
 
+  
+      document.getElementById("socialIcons"+index).style.visibility="visible"
+      document.getElementById("fb"+index).style.visibility="visible"
+      setTimeout(function(){
+        document.getElementById("socialIcons"+index).style.visibility="hidden"
+        document.getElementById("fb"+index).style.visibility="hidden"
+      },5000)
+    
+  
+    
+
+}
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const copyWebLink = (e) => {
+  let dId = e.target.data.docid;
   let tempInput = document.createElement("input");
   tempInput.style = "position: absolute; left: -1000px; top: -1000px";
-  tempInput.value = "https://remixmeofficial.web.app#blockblack";
+  tempInput.value = `https://remixmeofficial.web.app/Dashboard/user.html?album=${album.dId}`;
   document.body.appendChild(tempInput);
   tempInput.select();
   document.execCommand("copy");
   document.body.removeChild(tempInput);
 };
+
 
 // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -174,16 +230,20 @@ const voteClick = (e, current) => {
   if (current.classList[2] === "fa-heart") {
     // add the vote
     ALL_ALBUMS[index].votes++;
+    UDATA.votes.push(ALL_ALBUMS[index].userDocId);
     // console.log(ALL_ALBUMS[index].votes);
   } else {
     // decrement the vote
     if (ALL_ALBUMS[index].votes >= 1) {
       ALL_ALBUMS[index].votes--;
+      let indexOf = UDATA.votes.indexOf(ALL_ALBUMS[index].userDocId);
+      UDATA.votes.splice(indexOf, 1);
     }
   }
+  
   reCallRank();
 
-  console.log(ALL_ALBUMS);
+  // console.log(ALL_ALBUMS);
 
   let albumRef = db.collection("miscellaneous").doc("allAlbums");
   albumRef
@@ -195,6 +255,12 @@ const voteClick = (e, current) => {
       return albumRef.update(snapData);
     })
     .then(() => {
+      return U_REF.get();
+    }).then(userSnap => {
+      let userSnapData = userSnap.data();
+      userSnapData = UDATA;
+      return U_REF.update(userSnapData);
+    }).then(() => {
       console.log("votes updated");
       // display success message
     })

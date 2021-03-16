@@ -27,7 +27,7 @@ blockquote {padding: 0px 20px;margin: 0 0 20px;border-left: 5px solid #aaa;font-
 
 /*home*/
 .homeinfo{padding:100px 0 20px 0;}
-.homeinfo .player{margin-top: 70px;position: relative;}
+.homeinfo .player{margin-top: 53px;position: relative;}
 .homeinfo .player img.graphics{position: absolute;bottom: 252px;right: -24px;}
 .blockblack{background:rgba(0,0,0,0.8); border-radius: 10px; padding: 25px; }
 .fronttext h2{font-size:60px; line-height:60px;display: inline-block;padding:15px 10px;}
@@ -308,6 +308,18 @@ button.close{position: absolute;right: 0;background: #FFF;width: 25px;height: 25
 }
 #more {display: none;}
 @media (min-width: 700px) {
+  .marginResp{
+    margin-left: 2% !important;
+  }
+  .response{
+    margin-left: 10% !important;margin-right: 10% !important;display: block;
+  }
+  .responseBtn{
+    margin-left: 10% !important
+  }
+  #dots{
+    display: none;
+  }
 	#more{
         display: block !important;
 
@@ -324,6 +336,9 @@ button.close{position: absolute;right: 0;background: #FFF;width: 25px;height: 25
     }
     .resImg{
         width: 300px;height: 200px;object-fit: cover;
+    }
+    .voting{
+      margin-top: 20px;
     }
 
 }
@@ -450,4 +465,8 @@ button.close{position: absolute;right: 0;background: #FFF;width: 25px;height: 25
   .heart:hover{
     background-color: cadetblue !important;
     color: orange !important;
+  }
+  .hoverIcon:hover{
+    color: white !important;
+    
   }
