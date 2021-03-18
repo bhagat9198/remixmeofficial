@@ -87,7 +87,7 @@ a:hover{color:#fff;text-decoration:none}
 .panel {
   background-color: rgba(201, 139, 139, 0.8);
   border-radius: 10px;
-  padding: 15px 25px;
+  /* padding: 15px 25px; */
   position: relative;
   width: 100%;
   z-index: 10;
@@ -118,13 +118,20 @@ a:hover{color:#fff;text-decoration:none}
 .pricing-plan:last-child {
   border-bottom: none;
 }
+@media (min-width:901px) and (max-width:1000px){
+/* .pricing-img{
+  width: 100%;
+  height: 00px;
+  object-fit: cover;
 
+} */
+}
 @media (min-width: 900px) {
   .pricing-plan {
     border-bottom: none;
     border-right: 1px solid #e1f1ff;
     flex-basis: 100%;
-    padding: 25px 50px;
+    /* padding: 25px 50px; */
   }
 
   .pricing-plan:last-child {
@@ -299,7 +306,7 @@ button.close{position: absolute;right: 0;background: #FFF;width: 25px;height: 25
   }
 }
 .loginbtn:hover{
-    background-color: blanchedalmond !important;
+    background-color: white !important;
     color: black;
 }
 .uploadBtn{
@@ -335,7 +342,7 @@ button.close{position: absolute;right: 0;background: #FFF;width: 25px;height: 25
         margin-left: 280px;
     }
     .resImg{
-        width: 300px;height: 200px;object-fit: cover;
+      height: 200px;object-fit: contain;
     }
     .voting{
       margin-top: 20px;
@@ -470,3 +477,26 @@ button.close{position: absolute;right: 0;background: #FFF;width: 25px;height: 25
     color: white !important;
     
   }
+  /* *1*: make it "untouchable"
+ **/
+
+ .loader {
+  border: 10px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 10px solid #3498db;
+  width: 0px;
+  height: 0px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

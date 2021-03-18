@@ -61,12 +61,12 @@
             <!-- Nav Starts -->
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#home">Home</a></li>
-                <li><a href="/index.html#about">About</a></li>
-                <li><a href="/index.html#playlist">Playlist</a></li>
-                <li><a href="/index.html#album">Participate</a></li>
-                <li><a href="/index.html#blogevent">Leaderboard</a></li>
-                <li><a href="/index.html#contact">Contact</a></li>
+                <li class="active"><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#playlist">Playlist</a></li>
+                <li><a href="../index.html#album">Participate</a></li>
+                <li><a href="../index.html#blogevent">Leaderboard</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
               </ul>
             </div>
             <!-- #Nav Ends -->
@@ -98,7 +98,11 @@
                   id="solo-radio"
                 />
                 <label for="solo-radio">Solo Artist</label>
-                <input type="radio" name="userIs" value="Duo" id="duo-radio" />
+                <input 
+                  type="radio" 
+                  name="userIs" 
+                  value="Duo" 
+                  id="duo-radio" />
                 <label for="duo-radio">Duo Artist</label>
                 <input
                   type="radio"
@@ -111,7 +115,7 @@
             </div>
             <h4>Details</h4>
             <div class="input-group input-group-icon">
-              <input required type="text" name="name" placeholder="Name" />
+              <input required type="text" name="name" placeholder="DJ Name" />
               <div class="input-icon"><i class="fa fa-user"></i></div>
             </div>
             <div class="input-group input-group-icon">
@@ -119,7 +123,7 @@
                 required
                 type="text"
                 name="userName"
-                placeholder="User Name"
+                placeholder="DJ User Name"
               />
               <div class="input-icon"><i class="fa fa-user"></i></div>
             </div>
@@ -129,7 +133,7 @@
                 required
                 type="email"
                 name="email"
-                placeholder="Email Adress"
+                placeholder=" DJ Email Adress"
               />
               <div class="input-icon"><i class="fa fa-envelope"></i></div>
             </div>
@@ -487,7 +491,7 @@
               <button class="btn btn-primary" 
               style="background-color: orange !important; font-size: 15px;border: none !important;" 
               type="submit">
-                Create Account
+                Create Account  &nbsp; <div class="loader" id="loader" style="display: none;"></div>
               </button>
           </div>
 

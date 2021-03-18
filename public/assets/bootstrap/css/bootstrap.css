@@ -4581,6 +4581,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   }
   .navbar-nav.navbar-right:last-child {
     margin-right: -15px;
+    margin-top: 0.3%;
   }
 }
 
@@ -4820,7 +4821,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse .navbar-nav > li > a {
-  color: #999999;
+  color: white;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover,
