@@ -45,7 +45,6 @@ let uploadImgBtnHTML = document.querySelector("#upload-img-btn");
 
 const uploadImg = (e) => {
   IMAGE = e.target.files[0];
-  console.log(IMAGE);
 };
 
 uploadImgBtnHTML.addEventListener("change", uploadImg);
@@ -54,7 +53,6 @@ let myImg = document.querySelector("#album-cover-img");
 myImg.addEventListener("load", function () {
   let realWidth = myImg.naturalWidth;
   let realHeight = myImg.naturalHeight;
-  console.log(realWidth, typeof realWidth);
   if (realWidth <= 450 && realHeight <= 450) {
     if (!(IMAGE.size <= 350000)) {
       uploadImgBtnHTML.value = "";
@@ -71,24 +69,29 @@ myImg.addEventListener("load", function () {
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let urlLinkHTML = document.querySelector("#urlLink");
-
-const urlLinkVerify = async(e) => {
+let UTUBE_ID = null;
+const urlLinkVerify = async (e) => {
   e.preventDefault();
   document.getElementById("embed").style.display = "inline-block";
   let url = document.getElementById("getLink").value;
-  let urlIds = url.split('/');
-  let urlId = urlIds[urlIds.length -1];
-  db.collection('miscellaneous').doc('youtubeIDs').get().then((snapsIds) => {
-    let snapsIdsData = snapsIds.data().youtubeIDs;
-    let idPresent = snapsIdsData.indexOf(urlId);
-    if(idPresent >= 0) {
-      console.log("display msg: id already taken, try another");
-      // display msg: id already taken, try another
-    } else {
-      document.getElementById("embed").src = "https://www.youtube.com/embed/" + url.substring(17);
-      VERIFY_LINK = true;
-    }
-  })
+  let urlIds = url.split("/");
+  let urlId = urlIds[urlIds.length - 1];
+  db.collection("miscellaneous")
+    .doc("youtubeIDs")
+    .get()
+    .then((snapsIds) => {
+      let snapsIdsData = snapsIds.data().youtubeIDs;
+      let idPresent = snapsIdsData.indexOf(urlId);
+      if (idPresent >= 0) {
+        console.log("display msg: id already taken, try another");
+        // display msg: id already taken, try another
+      } else {
+        UTUBE_ID = urlId;
+        document.getElementById("embed").src =
+          "https://www.youtube.com/embed/" + url.substring(17);
+        VERIFY_LINK = true;
+      }
+    });
 };
 
 urlLinkHTML.addEventListener("click", urlLinkVerify);
@@ -101,7 +104,7 @@ const uploadAlbumFormSubmit = async (e) => {
   document.getElementById("loader").style.display = "inline-block";
   e.preventDefault();
 
-  if(!VERIFY_LINK) {
+  if (!VERIFY_LINK) {
     // display error message, link not verified
     return;
   }
@@ -141,13 +144,13 @@ const uploadAlbumFormSubmit = async (e) => {
       imgLink = null;
     }
 
+    
+    let description = uploadAlbumFormHTML["description"].value;
+    let utubeLink = uploadAlbumFormHTML["utubeLink"].value;
     if (!utubeLink) {
       alert("Please insert your youtube link");
       document.getElementById("loader").style.display = "none";
     }
-
-    let description = uploadAlbumFormHTML["description"].value;
-    let utubeLink = uploadAlbumFormHTML["utubeLink"].value;
 
     let album_data = {
       description: description,
@@ -194,8 +197,21 @@ const uploadAlbumFormSubmit = async (e) => {
         return U_REF.update(snapData);
       })
       .then(() => {
-        console.log("all done");
+        return db.collection("miscellaneous").doc("youtubeIDs").get();
+      })
+      .then((uidsnap) => {
+        let uidsnapData = uidsnap.data();
+        uidArr = uidsnapData.youtubeIDs;
+        uidArr.push(UTUBE_ID);
+        return db
+          .collection("miscellaneous")
+          .doc("youtubeIDs")
+          .update(uidsnapData);
+      })
+      .then(() => {
         $("#blogdetail").modal("hide");
+        console.log("updated");
+        // success message
       })
       .catch((error) => {
         let errorMessage = error.message;

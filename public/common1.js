@@ -72,7 +72,7 @@ const displayLeaderBoard = () => {
       }
     }
 
-    let albumUrl = `./Dashboard/user.html?album=${album.userDocId}`;
+    let albumUrl = `./Dashboard/user.html?album=${index}`;
 
     let imgPath;
     if (!album.img.url) {
@@ -88,7 +88,7 @@ const displayLeaderBoard = () => {
         imgPath = album.img.url;
       }
 
-      albumUrl = `./user.html?album=${album.userDocId}`;
+      albumUrl = `./user.html?album=${index}`;
       for (let i = 0; i < UDATA.votes.length; i++) {
         if (UDATA.votes[i] === album.userDocId) {
           voteStatus = `
