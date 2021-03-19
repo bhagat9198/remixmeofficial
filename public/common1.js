@@ -98,7 +98,7 @@ const displayLeaderBoard = () => {
         }
       }
     }
-    if(album.img.url =="none"){
+    if(album.img.url =="none" ||album.img.url ==null){
       
       album.img.url = "../assets/images/common.png"
     }
