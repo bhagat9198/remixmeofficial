@@ -2,11 +2,53 @@ console.log("signup1.js");
 const auth = firebase.auth();
 const db = firebase.firestore();
 const createAccountFormHTML = document.querySelector("#create-account-form");
+let USER_ID = false;
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const  currentSignedUser = auth.currentUser;
-if (currentSignedUser) {
-  window.location.replace('./../index.html');
+auth.onAuthStateChanged(async (user) => {
+  if (user) {
+    if (USER_ID) {
+      window.location.replace("./../Dashboard/dashboard.html");
+    } else {
+      document.getElementById("loader").style.display = "none";
+      window.history.back();
+    }
+  }
+});
+
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let soloRadioHTML = createAccountFormHTML.querySelector('#solo-radio');
+let duoRadioHTML = createAccountFormHTML.querySelector('#duo-radio');
+let listenerRadioHTML = createAccountFormHTML.querySelector('#listener-radio');
+
+const changePlaceholders = e => {
+  e.preventDefault();
+
+  if(soloRadioHTML.checked) {
+    createAccountFormHTML['name'].placeholder = 'Solo DJ Name'; 
+    createAccountFormHTML['userName'].placeholder = 'Solo DJ User Name'; 
+    createAccountFormHTML['email'].placeholder = 'Solo DJ Email'; 
+  }
+
+  if(duoRadioHTML.checked) {
+    createAccountFormHTML['name'].placeholder = 'Duo DJ Name'; 
+    createAccountFormHTML['userName'].placeholder = 'Duo DJ User Name'; 
+    createAccountFormHTML['email'].placeholder = 'Duo DJ Email'; 
+  }
+
+  if(listenerRadioHTML.checked) {
+    createAccountFormHTML['name'].placeholder = 'Listner Name'; 
+    createAccountFormHTML['userName'].placeholder = 'Listner User Name'; 
+    createAccountFormHTML['email'].placeholder = 'Listner Email'; 
+  }
 }
+
+soloRadioHTML.addEventListener('change', changePlaceholders);
+duoRadioHTML.addEventListener('change', changePlaceholders);
+listenerRadioHTML.addEventListener('change', changePlaceholders);
+
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const createAccountForm = (e) => {
   document.getElementById("loader").style.display="inline-block";
@@ -43,16 +85,13 @@ const createAccountForm = (e) => {
     auth
     .createUserWithEmailAndPassword(email, password)
     .then(async(userCredential) => {
-      // console.log(userCredential);
-      // let user = userCredential.user;
-      let userId = userCredential.user.uid;
-      // console.log(userId);
+      USER_ID = userCredential.user.uid;
       data.logInHistory.push(new Date().valueOf().toString());
-      await db.collection('users').doc(userId).set(data);
+      await db.collection('users').doc(USER_ID).set(data);
       console.log(data, typeof data.logInHistory);
 
       document.getElementById("loader").style.display="none";
-      window.location.replace('./../Dashbord/dashboard.html');
+      window.location.replace('./../Dashboard/dashboard.html');
     })
     .catch((error) => {
       let errorCode = error.code;
@@ -61,8 +100,8 @@ const createAccountForm = (e) => {
       console.log(error, errorCode, errorMessage);
     });
   }
-
-  
 };
 
 createAccountFormHTML.addEventListener("submit", createAccountForm);
+
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

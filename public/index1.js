@@ -7,7 +7,7 @@ const UDATA = false;
 
 auth.onAuthStateChanged((user) => {
   if (user) {
-    window.location.replace("./Dashbord/dashboard.html");
+    window.location.replace("./Dashboard/dashboard.html");
   } else {
     
   }
