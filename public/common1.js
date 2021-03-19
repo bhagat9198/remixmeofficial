@@ -72,7 +72,7 @@ const displayLeaderBoard = () => {
       }
     }
 
-    let albumUrl = `user.html?album=${album.userDocId}`;
+    let albumUrl = `./Dashbord/user.html?album=${album.userDocId}`;
   
 
     if(UDATA) {
