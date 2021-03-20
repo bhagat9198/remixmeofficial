@@ -102,6 +102,7 @@ const displayLeaderBoard = () => {
               font-size: 15px;
               border: 1px solid white;
               margin-bottom: 2%;
+              width:100px ;
             "
             >&nbsp;Vote
           </i>`;
@@ -115,12 +116,12 @@ const displayLeaderBoard = () => {
     }
    
     li += `
-    <li style="background-color: #420202a2">
+    <li style="background-color: #420202a2;list-style:none">
       <div class="row">
         <a href="${albumUrl}">
         <div class="col-xs-12 col-sm-2 col-lg-2 date">
           <h1>#${rank}</h1>
-          <span>...</span>
+       
           <h5>
             ${rankStatus}
           </h5>

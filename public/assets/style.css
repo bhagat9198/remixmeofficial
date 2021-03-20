@@ -142,6 +142,7 @@ a:hover{color:#fff;text-decoration:none}
 .pricing-img {
   margin-bottom: 25px;
   max-width: 100%;
+  width: 300px;;
 }
 
 .pricing-header {
@@ -276,6 +277,9 @@ button.close{position: absolute;right: 0;background: #FFF;width: 25px;height: 25
 	.events ul li .date b{display: inline;font-size: 22px;border-right: 1px solid #333;padding-right: 10px;margin-right: 10px;}
     .iframe{
         width: 100% !important;
+    }
+    #album-pic{
+     
     }
     .container{
         /* padding-left: 5px;

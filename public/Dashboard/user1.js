@@ -112,7 +112,7 @@ const displayComments = () => {
     ddd = ddd.substring(0, 24);
 
     li += `
-    <li class="list-group-item">
+    <li class="list-group-item" >
       <div class="row">
         <div class="col-xs-12 col-md-12" style="margin-left:-1% !important">
             <div class="col-lg-1 mic-info">
