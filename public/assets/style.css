@@ -89,7 +89,7 @@ a:hover{color:#fff;text-decoration:none}
   border-radius: 10px;
   /* padding: 15px 25px; */
   position: relative;
-  width: 100%;
+  width: 40%;
   z-index: 10;
 }
 
@@ -142,7 +142,7 @@ a:hover{color:#fff;text-decoration:none}
 .pricing-img {
   margin-bottom: 25px;
   max-width: 100%;
-  width: 300px;;
+  width: 250px;;
 }
 
 .pricing-header {
@@ -163,6 +163,7 @@ a:hover{color:#fff;text-decoration:none}
   font-size: 12px;
   line-height: 1.5;
   padding: 15px 0;
+  font-size: 15px;
 }
 
 .pricing-features-item:last-child {
@@ -235,7 +236,7 @@ a:hover{color:#fff;text-decoration:none}
 .modal-dialog{max-width: 800px; width: 95%;}
 .modal-content{overflow: auto; padding:0 20px;color: #444;}
 .modal-content h2{color: #222;margin: 15px 0;}
-button.close{position: absolute;right: 0;background: #FFF;width: 25px;height: 25px;line-height: 9px;}
+button.close{position: absolute;right: 0;background: black !important; color:black ;width: 25px;height: 25px;line-height: 9px;}
 #blog small{margin-bottom: 10px;display: block;}
 /*modal*/
 
@@ -278,6 +279,13 @@ button.close{position: absolute;right: 0;background: #FFF;width: 25px;height: 25
     .iframe{
         width: 100% !important;
     }
+    .panel{
+      width: 100% !important;
+    }
+    .steps{
+      font-size: 18px !important;
+    }
+   
     #album-pic{
      
     }
@@ -321,6 +329,10 @@ button.close{position: absolute;right: 0;background: #FFF;width: 25px;height: 25
 @media (min-width: 700px) {
   .marginResp{
     margin-left: 2% !important;
+  }
+ 
+  #respPricing{
+    display: flex !important;
   }
   .response{
     margin-left: 10% !important;margin-right: 10% !important;display: block;

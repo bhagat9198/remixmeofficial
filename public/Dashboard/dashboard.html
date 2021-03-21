@@ -261,57 +261,49 @@
           </div>
         </div>
       </div>
-      <div class="panel pricing-table">
-        <div class="pricing-plan">
-          <img
-            src="./../assets/images/1stprize.JPG"
-            alt=""
-            class="pricing-img"
-          />
-          <h2 class="pricing-header">First Prize</h2>
-          <ul class="pricing-features">
-            <li class="pricing-features-item">Official Remix</li>
-            <li class="pricing-features-item">Collaboration</li>
-          </ul>
+      <section id="respPricing">
+        <div class="panel pricing-table" style="margin-right:2% ;">
+          <div class="pricing-plan">
+            <img src="../assets/images/1stprize.JPG" alt="" class="pricing-img" />
+            <h2 class="pricing-header">First Prize</h2>
+            <ul class="pricing-features">
+              <li class="pricing-features-item">Official Remix</li>
+              <li class="pricing-features-item">Collaboration</li>
+            </ul>
+          </div>
         </div>
-      
-        <div class="pricing-plan">
-          <img
-            src="../assets/images/NEWLOGO.JPg"
-            alt=""
-            class="pricing-img"
-          />
-          <h2 class="pricing-header">Second Prize</h2>
-          <ul class="pricing-features">
-            <li class="pricing-features-item">Mixing & Mastering By Snasa</li>
-          </ul>
+          <div class="panel pricing-table" style="margin-right:2% ;">
+          <div class="pricing-plan">
+            <img src="../assets/images/NEWLOGO.JPg" alt="" class="pricing-img" />
+            <h2 class="pricing-header">Second Prize</h2>
+            <ul class="pricing-features">
+              <li class="pricing-features-item">Mixing & Mastering By Snasa</li>
+            </ul>
+          </div>
+          </div>
+          <div class="panel pricing-table" style="">
+          <div class="pricing-plan">
+            <img src="../assets/images/OptionC.JPG" alt="" class="pricing-img" />
+            <h2 class="pricing-header">Third Prize</h2>
+            <ul class="pricing-features">
+              <li class="pricing-features-item">
+                Custom Album Art By Option C Studios
+              </li>
+            </ul>
+          </div>
         </div>
-        
-        <div class="pricing-plan">
-          <img
-            src="../assets/images/OptionC.JPG"
-            alt=""
-            class="pricing-img"
-          />
-          <h2 class="pricing-header">Third Prize</h2>
-          <ul class="pricing-features">
-            <li class="pricing-features-item">
-              Custom Album Art By Option C Studios
-            </li>
-          </ul>
-        </div>
-      </div>
+      </section>
       <div class="blockblack">
 
-        <h3>
-          <span class="fa fa-list"></span> Steps To Participate
-        </h3>
-
+        <h5 style="font-size: 25px;">
+          <span class="fa fa-list"> Steps To Participate</span>
+        </h5>
+        <br>
         <div id="blogevents" class="blogevent "style="" >
           <div class="row">
             <!-- events -->
             <div class="col-md-12 col-xs-12">
-              <ol style="font-size: 25px !important;">
+              <ol class="steps" style="font-size: 25px;">
                 <li  >
                   Click on "Log-in to Participate/Vote".
                 </li>
@@ -342,16 +334,17 @@
         </div>
 
       </div>
+      <br>
       <div class="blockblack">
-        <h3>
-          <span class="fa fa-trophy"></span> Leader-Board
-        </h3>
-
+      <h5 style="font-size: 25px;">
+        <span class="fa fa-trophy"> Leader-Board</span>
+      </h5>
+        <br>
         <div id="blogevts" class="blogent">
           <div class="row">
             <div class="col-md-12 col-xs-12">
               <div class="events">
-                <ul id="all-albums-list">
+                <div id="all-albums-list">
                   <!-- <li style="background-color: #420202">
                     <div class="row">
                       <div class="col-xs-12 col-sm-2 col-lg-2 date">
@@ -437,20 +430,21 @@
                     </div>
                   </li>
                   <br /> -->
-                </ul>
+                </div>
               </div>
               <span style="float: right"
                 ><blockquote
                   style="font-weight: 700; font-size: 11px !important"
                 >
-                  The winners won't be selected on the basis of votes and
-                  position in leaderboard. The decision will be purely based on
-                  the music.
+                  The winners will be selected on the basis of votes and musical factors.
                 </blockquote></span
               >
             </div>
           </div>
         </div>
+      </div>
+      <br>
+      <div class="blockblack">
         <div id="about" class="spacer">
           <h3><span class="glyphicon glyphicon-user"></span> About Snasa</h3>
           <div class="row">
@@ -639,9 +633,10 @@
         <div class="modal-content">
           <button
             type="button"
-            class="close"
+            class="closeT"
             data-dismiss="modal"
             aria-hidden="true"
+            style="color: black;float: right;right: 0;border:none;background-color:transparent;padding: 3px;font-size: 20px;"
           >
             &times;
           </button>
@@ -701,7 +696,7 @@
                       placeholder="domain.tld"
                       name="utubeLink"
                     />
-                    <button class="btn" id="urlLink">Verify ✔</button>
+                    <button class="btn" id="urlLink" style="background-color: lightgreen;">Verify ✔</button>
                   </div>
                   <iframe
                     height="480"
@@ -740,7 +735,7 @@
                             <button
                               type="submit"
                               class="btn btnUpload"
-                              style="background-color: orange;display: flex;"
+                              style="background-color: orange;color: white ;display: flex;"
                             >
                               Upload Now &nbsp; <div class="loader" id="loader" style="display: none;"></div>
                             </button>

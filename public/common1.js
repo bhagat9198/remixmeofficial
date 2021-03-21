@@ -119,7 +119,7 @@ const displayLeaderBoard = () => {
     <li style="background-color: #420202a2;list-style:none">
       <div class="row">
         <a href="${albumUrl}">
-        <div class="col-xs-12 col-sm-2 col-lg-2 date">
+        <div class="col-xs-12 col-sm-2 col-lg-2 date" style="background:#111;padding-top:20px;padding-bottom:20px">
           <h1>#${rank}</h1>
        
           <h5>
