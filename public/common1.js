@@ -102,6 +102,7 @@ const displayLeaderBoard = () => {
               font-size: 15px;
               border: 1px solid white;
               margin-bottom: 2%;
+              width:100px ;
             "
             >&nbsp;Vote
           </i>`;
@@ -109,14 +110,18 @@ const displayLeaderBoard = () => {
         }
       }
     }
-
+    if(album.img.url =="none" ||album.img.url ==null){
+      
+      album.img.url = "../assets/images/common.png"
+    }
+   
     li += `
-    <li style="background-color: #420202a2">
+    <li style="background-color: #420202a2;list-style:none">
       <div class="row">
         <a href="${albumUrl}">
-        <div class="col-xs-12 col-sm-2 col-lg-2 date">
+        <div class="col-xs-12 col-sm-2 col-lg-2 date" style="background:#111;padding-top:20px;padding-bottom:20px">
           <h1>#${rank}</h1>
-          <span>...</span>
+       
           <h5>
             ${rankStatus}
           </h5>
@@ -182,12 +187,11 @@ const displayLeaderBoard = () => {
           >
           <span style="visibility:hidden" id="socialIcons${index}">
           <br>
-
-
           <a target="_blank" href="https://api.whatsapp.com/send?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${index}" data-action="share/whatsapp/share"> <i  style="color:green" class="hoverIcon fa fa-whatsapp"></i> </a>
           <a target="_blank" href="https://twitter.com/intent/tweet?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${index}"><i  style="color:blue " class="hoverIcon fa fa-twitter"></i> </a>
           <a target="_blank" data-docid="${index}" onclick="copyWebLink(event, this)"  style="cursor:pointer"><i  style="color:black "  class="hoverIcon fa fa-link"></i> </a>
           <a href="https://www.facebook.com/sharer/sharer.php?u=https://remixmeofficial.web.app/Dashboard/user.html?album=${index}" target="_blank">Facebook</a>
+          </span>
         </div>
       </div>
     </li>
