@@ -83,7 +83,7 @@ const urlLinkVerify = async (e) => {
       let snapsIdsData = snapsIds.data().youtubeIDs;
       let idPresent = snapsIdsData.indexOf(urlId);
       if (idPresent >= 0) {
-        console.log("display msg: id already taken, try another");
+        alert(" Link already taken, try another");
         // display msg: id already taken, try another
       } else {
         UTUBE_ID = urlId;
