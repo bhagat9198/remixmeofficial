@@ -173,6 +173,7 @@
           class="navbar navbar-inverse navbar-fixed-top animated fadeInDown"
           role="navigation"
           id="top-nav"
+
         >
           <div class="container">
             <div class="navbar-header">
@@ -216,100 +217,11 @@
     </div>
     <br>
   
-    <!-- Side Navigation -->
-    <!-- <nav
-      class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card w3-right"
-      style="z-index: 3; width: 320px; float: right;"
-      id="mySidebar"
-    >
-      <a
-        href="javascript:void(0)"
-        class="w3-bar-item w3-button w3-border-bottom w3-large"
-        ><img
-          src="../assets/images/logo.png"
-          style="width: 60%"
-      /></a>
-      <a
-        href="javascript:void(0)"
-        onclick="w3_close()"
-        title="Close Sidemenu"
-        class="w3-bar-item w3-button w3-hide-large w3-large"
-        >Close <i class="fa fa-remove"></i
-      ></a>
-    
-      <a
-        id="myBtn"
-        onclick="myFunc('Demo1')"
-        href="javascript:void(0)"
-        class="w3-bar-item w3-button  w3-dark-grey w3-button w3-hover-black "
-        ><i class="fa fa-inbox w3-margin-right"></i>Comments Section  <a href="#" class="w3-bar-item w3-button"
-        ><textarea style="width: 100% ;border: 1px solid black; border-radius: 4px;" type="text" placeholder="Comment on track"></textarea>&nbsp;<button class="btn" style="background-color: d;" >Post <i class="fa fa-paper-plane w3-margin-right"></i></button></a
-      > <Section>  </Section>
-        
-      </a>
-      
-      <div id="Demo1" class="w3-hide w3-animate-left">
-        <a
-          href="javascript:void(0)"
-          class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey"
-          onclick="openMail('Borge');w3_close();"
-          id="firstTab"
-        >
-          <div class="w3-container">
-            <img
-              class="w3-round w3-margin-right"
-              src="../assets/images/back4.jpg"
-              style="width: 15%"
-            /><span class="w3-opacity w3-large">Borge Refsnes</span>
-            <h6>Subject: Remember Me</h6>
-            <p>Hello, i just wanted to let you know that i'll be home at...</p>
-          </div>
-        </a>
-        <a
-          href="javascript:void(0)"
-          class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey"
-          onclick="openMail('Jane');w3_close();"
-        >
-          <div class="w3-container">
-            <img
-              class="w3-round w3-margin-right"
-              src="../assets/images/back2.jpg"
-              style="width: 15%"
-            /><span class="w3-opacity w3-large">Jane Doe</span>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-          </div>
-        </a>
-        <a
-          href="javascript:void(0)"
-          class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey"
-          onclick="openMail('John');w3_close();"
-        >
-          <div class="w3-container">
-            <img
-              class="w3-round w3-margin-right"
-              src="../assets/images/back1.jpg"
-              style="width: 15%"
-            /><span class="w3-opacity w3-large">John Doe</span>
-            <p>Welcome!</p>
-          </div>
-        </a>
-      </div>
-     
-      <a href="#" class="w3-bar-item w3-button"
-        ><i class="fa fa-hourglass-end w3-margin-right"></i>Drafts</a
-      >
-      <a href="#" class="w3-bar-item w3-button"
-        ><i class="fa fa-trash w3-margin-right"></i>Trash</a
-      >
-    </nav> -->
 
-    <!-- Modal that pops up when you click on "New Message" -->
-
-
-    <!-- Overlay effect when opening the side navigation on small screens -->
 
    
   </div>
+
 
     <div class="w3-main" style="margin-left: 0px;margin-top: 3%;">
    
@@ -341,7 +253,12 @@
               <br>
               <section  class="grpBtns" style="display: flex;;position: relative;">
                 <button id="album-vote" class="votingBtn"style=""><i class="fa fa-heart"></i> VOTE</button>
-                <button id="album-vote" class="votingBtn"style=""><i class="fa fa-share"></i> Share</button>
+
+                <button id="album-share" class="votingBtn"style=""><i class="fa fa-share"></i> Share</button>
+                <span style="visibility:hidden" id="socialIcons">
+                  
+                </span>
+
               </section>
             </div>
             

@@ -26,21 +26,15 @@ const changePlaceholders = e => {
   e.preventDefault();
 
   if(soloRadioHTML.checked) {
-    createAccountFormHTML['name'].placeholder = 'Solo DJ Name'; 
-    createAccountFormHTML['userName'].placeholder = 'Solo DJ User Name'; 
-    createAccountFormHTML['email'].placeholder = 'Solo DJ Email'; 
+    createAccountFormHTML['userName'].placeholder = 'Stage Name / DJ Name'; 
   }
 
   if(duoRadioHTML.checked) {
-    createAccountFormHTML['name'].placeholder = 'Duo DJ Name'; 
-    createAccountFormHTML['userName'].placeholder = 'Duo DJ User Name'; 
-    createAccountFormHTML['email'].placeholder = 'Duo DJ Email'; 
+    createAccountFormHTML['userName'].placeholder = 'Stage Name / DJ Name'; 
   }
 
   if(listenerRadioHTML.checked) {
-    createAccountFormHTML['name'].placeholder = 'Listner Name'; 
-    createAccountFormHTML['userName'].placeholder = 'Listner User Name'; 
-    createAccountFormHTML['email'].placeholder = 'Listner Email'; 
+    createAccountFormHTML['userName'].placeholder = 'User Name'; 
   }
 }
 

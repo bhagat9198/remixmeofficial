@@ -10,6 +10,7 @@ let UDATA = null;
 let VOTE_GIVEN = true;
 const albumVoteHTML = document.querySelector("#album-vote");
 albumVoteHTML.disabled = true;
+const socialIconsHTML = document.querySelector('#socialIcons');
 
 const getUrl = async () => {
   let windowUrl = window.location.href;
@@ -54,6 +55,13 @@ getUrl()
     }
     albumVoteHTML.disabled = false;
 
+    socialIconsHTML.innerHTML = `
+    <a target="_blank" href="https://api.whatsapp.com/send?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}" data-action="share/whatsapp/share"> <i  style="color:green" class="hoverIcon fa fa-whatsapp"></i> </a>
+    <a target="_blank" href="https://twitter.com/intent/tweet?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}"><i  style="color:blue " class="hoverIcon fa fa-twitter"></i> </a>
+    <a target="_blank" data-docid="${DOC_INDEX}" onclick="copyWebLink(event, this)"  style="cursor:pointer"><i  style="color:black "  class="hoverIcon fa fa-link"></i> </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}" target="_blank">Facebook</a>
+  `;
+
     return;
   })
   .catch((error) => {
@@ -85,7 +93,7 @@ const displayAlbumData = () => {
   d = d.substring(0, 15);
   ablumUsernameHTML.innerHTML = `${ALBUM_DATA.userName} : ${d}`;
   albumDescriptionHTML.innerHTML = `<p>${ALBUM_DATA.description}</p>`;
-  albumSignHTML.innerHTML = ALBUM_DATA.name;
+  albumSignHTML.innerHTML = ALBUM_DATA.userName;
 };
 
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -268,3 +276,36 @@ const updateVoteClick = (e) => {
 };
 
 albumVoteHTML.addEventListener("click", updateVoteClick);
+
+
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// share
+const albumShareHTML = document.querySelector('#album-share');
+
+const showShareIcon = () => {
+ socialIconsHTML.style.visibility = "visible";
+  setTimeout(function () {
+   socialIconsHTML.style.visibility = "hidden";
+  }, 5000);
+}
+
+albumShareHTML.addEventListener('click', showShareIcon);
+
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const logoutBtnHTML = document.querySelector("#logout-btn");
+
+const logout = (e) => {
+  auth
+    .signOut()
+    .then(() => {
+      window.location.replace("./../index.html");
+    })
+    .catch((error) => {
+      let errorMessage = error.message;
+      console.log(errorMessage);
+    });
+};
+
+logoutBtnHTML.addEventListener("click", logout);
