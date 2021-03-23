@@ -20,6 +20,7 @@ const sortAlbums = () => {
   }
   ALL_ALBUMS.sort(descreacingOrder);
 };
+var user = firebase.auth().currentUser;
 
 let allAlbumsListHTML = document.querySelector("#all-albums-list");
 
@@ -58,6 +59,8 @@ const displayLeaderBoard = () => {
         border: 1px solid white;
         margin-bottom: 2%;
         width:100px !important;
+        margin-left:33%;
+        text-align:center
       "
       >&nbsp;Vote
     </i>`;
@@ -103,6 +106,9 @@ const displayLeaderBoard = () => {
               border: 1px solid white;
               margin-bottom: 2%;
               width:100px ;
+              margin-left:33%;
+              text-align:center
+              
             "
             >&nbsp;Vote
           </i>`;
@@ -110,11 +116,21 @@ const displayLeaderBoard = () => {
         }
       }
     }
+ 
     if(album.img.url =="none" ||album.img.url ==null){
-      
-      album.img.url = "../assets/images/common.png"
-    }
+
+      if(user){
+
+        album.img.url = "../assets/images/common.png"
+      }else{
    
+        album.img.url = "assets/images/common.png"
+      }
+  
+    }else{
+     
+    }
+ 
     li += `
     <li style="background-color: #420202a2;list-style:none">
       <div class="row">
@@ -180,6 +196,8 @@ const displayLeaderBoard = () => {
                 border: 1px solid white;
                 margin-bottom: 2%;
                 width:100px !important;
+                margin-left:33%;
+                text-align:center
               "
           
               >&nbsp;Share</i
