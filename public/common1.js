@@ -132,7 +132,7 @@ const displayLeaderBoard = () => {
     }
  
     li += `
-    <li style="background-color: #420202a2;list-style:none">
+    <li style="  background: radial-gradient(#9e0300,#420202a2 ); ;list-style:none">
       <div class="row">
         <a href="${albumUrl}">
         <div class="col-xs-12 col-sm-2 col-lg-2 date" style="background:#111;padding-top:20px;padding-bottom:20px">
@@ -152,7 +152,7 @@ const displayLeaderBoard = () => {
               alt="${album.userName} remixe"
           /></a>
         </div>
-        <div class="col-xs-12 col-sm-4 col-lg-4">
+        <div class="col-xs-12 col-sm-4 col-lg-4" style="margin-top:1%">
           <h5>
             <a
               href="${albumUrl}"
@@ -175,7 +175,7 @@ const displayLeaderBoard = () => {
         </div>
         <div
           class="voting col-xs-12 col-sm-3 col-lg-3 date"
-          style="background-color: transparent !important"
+          style="background-color: transparent !important;margin-top:4%"
         >
           <h2 >
             <div>
@@ -203,13 +203,14 @@ const displayLeaderBoard = () => {
               >&nbsp;Share</i
             ></span
           >
-          <span style="visibility:hidden" id="socialIcons${index}">
           <br>
-          <a target="_blank" href="https://api.whatsapp.com/send?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${index}" data-action="share/whatsapp/share"> <i  style="color:green" class="hoverIcon fa fa-whatsapp"></i> </a>
-          <a target="_blank" href="https://twitter.com/intent/tweet?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${index}"><i  style="color:blue " class="hoverIcon fa fa-twitter"></i> </a>
-          <a target="_blank" data-docid="${index}" onclick="copyWebLink(event, this)"  style="cursor:pointer"><i  style="color:black "  class="hoverIcon fa fa-link"></i> </a>
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://remixmeofficial.web.app/Dashboard/user.html?album=${index}" target="_blank">Facebook</a>
-          </span>
+        <center><span style="visibility:hidden" id="socialIcons${index}" style="position:absolute;left:100% !important">
+         
+          <a  target="_blank" href="https://api.whatsapp.com/send?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${index}" data-action="share/whatsapp/share"> <i  style="color:green" class="hoverIcon fa fa-whatsapp"></i> </a>
+          <a  target="_blank" href="https://twitter.com/intent/tweet?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${index}"><i  style="color:blue " class="hoverIcon fa fa-twitter"></i> </a>
+          <a  target="_blank" data-docid="${index}" onclick="copyWebLink(event, this)"   style="cursor:pointer"><i  style="color:black "  class="hoverIcon fa fa-link"></i> </a>
+          <a  href="https://www.facebook.com/sharer/sharer.php?u=https://remixmeofficial.web.app/Dashboard/user.html?album=${index}" target="_blank"><i  style="color:blue "  class="hoverIcon fa fa-facebook"></i> </a>
+          </span></center>
         </div>
       </div>
     </li>
@@ -222,7 +223,9 @@ const displayLeaderBoard = () => {
 };
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+function showCopied(){
+  alert("Link Copied")
+}
 function showIcon(id, index) {
   document.getElementById("socialIcons" + index).style.visibility = "visible";
   setTimeout(function () {
@@ -240,6 +243,7 @@ const copyWebLink = (e, curr) => {
   tempInput.select();
   document.execCommand("copy");
   document.body.removeChild(tempInput);
+  alert("Link Copied")
 };
 
 // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

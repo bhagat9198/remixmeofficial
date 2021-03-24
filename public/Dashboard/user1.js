@@ -32,9 +32,13 @@ getUrl()
     await auth.onAuthStateChanged((user) => {
       if (!user) {
         // throw new Error("User is not loggedIn");
+        document.getElementById("logout-btn").style.display="none"
+        document.getElementById("login-btn").style.display="block"
         throw "User is not loggedIn";
       } else {
         context = user;
+        document.getElementById("logout-btn").style.display="block"
+        document.getElementById("login-btn").style.display="none"
       }
     });
     // console.log(context);

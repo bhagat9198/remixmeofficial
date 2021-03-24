@@ -170,10 +170,11 @@
       color: white;
     }
     .votingBtn{
-      padding:10px;background:red;color:white;
+      padding:10px;background:transparent;color:white;
       margin-left: 3%;
       border-radius: 2px;
-      border:none;
+      border:1px solid white;
+
     }
     .votingBtn:hover{
       background-color: lightcoral;
@@ -231,15 +232,17 @@
 
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right" style="margin-top:1%">
-                <li class="active"><a href="./dashboard.html#home">Home</a></li>
+                <li class=""><a href="./dashboard.html#home">Home</a></li>
                 <li><a href="./dashboard.html#about">About</a></li>
                 <li><a href="./dashboard.html#playlist">Playlist</a></li>
                 <li><a href="./dashboard.html#participate">Participate</a></li>
                 <li><a href="./dashboard.html#blogeves">Leaderboard</a></li>
                 <li><a href="./dashboard.html#contact">Contact</a></li>
                 <li>
-                  <a href="!#" id="logout-btn" class="btn btn-danger">LogOut</a>
+                  <a href="!#" id="logout-btn" class="btn btn-danger" style="display: none;">LogOut</a>
+
                 </li>
+                <li><a href="../Auth/login.html" id="login-btn" style="display: none;">Login</a></li>
               </ul>
             </div>
           </div>

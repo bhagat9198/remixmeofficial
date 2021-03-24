@@ -83,7 +83,7 @@ const urlLinkVerify = async (e) => {
       let snapsIdsData = snapsIds.data().youtubeIDs;
       let idPresent = snapsIdsData.indexOf(urlId);
       if (idPresent >= 0) {
-        alert(" Link already taken, try another");
+        alert(" Remix already posted");
         // display msg: id already taken, try another
       } else {
         UTUBE_ID = urlId;
@@ -105,7 +105,7 @@ const uploadAlbumFormSubmit = async (e) => {
   e.preventDefault();
 
   if (!VERIFY_LINK) {
-    // display error message, link not verified
+    alert("Please Verify the link")
     return;
   }
 
