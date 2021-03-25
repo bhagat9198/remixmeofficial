@@ -206,7 +206,7 @@ const displayLeaderBoard = () => {
           <br>
         <center><span style="visibility:hidden" id="socialIcons${index}" >
          
-          <a  target="_blank" href="https://api.whatsapp.com/send?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${index}" data-action="share/whatsapp/share"> <i  style="color:green" class="hoverIcon fa fa-whatsapp"></i> </a>
+          <a  target="_blank" href="https://api.whatsapp.com/send?text=Hey guys ! Please Vote and Share this manchale remix by clicking on-  https://remixmeofficial.web.app/Dashboard/user.html?album=${index}" data-action="share/whatsapp/share"> <i  style="color:green" class="hoverIcon fa fa-whatsapp"></i> </a>
           <a  target="_blank" href="https://twitter.com/intent/tweet?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${index}"><i  style="color:blue " class="hoverIcon fa fa-twitter"></i> </a>
           <a  target="_blank" data-docid="${index}" onclick="copyWebLink(event, this)"   style="cursor:pointer"><i  style="color:black "  class="hoverIcon fa fa-link"></i> </a>
           <a  href="https://www.facebook.com/sharer/sharer.php?u=https://remixmeofficial.web.app/Dashboard/user.html?album=${index}" target="_blank"><i  style="color:blue "  class="hoverIcon fa fa-facebook"></i> </a>
