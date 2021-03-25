@@ -28,14 +28,14 @@ getUrl()
     ALBUM_DATA = allAlbums[DOC_INDEX];
 
     socialIconsHTML.innerHTML = `
-      <a target="_blank" href="https://api.whatsapp.com/send?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}" data-action="share/whatsapp/share"> <i  style="color:green" class="hoverIcon fa fa-whatsapp"></i> </a>
-      <a target="_blank" href="https://twitter.com/intent/tweet?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}"><i  style="color:blue " class="hoverIcon fa fa-twitter"></i> </a>
-      <a target="_blank" data-docid="${DOC_INDEX}" onclick="copyWebLink(event, this)"  style="cursor:pointer"><i  style="color:black "  class="hoverIcon fa fa-link"></i> </a>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}" target="_blank">Facebook</a>
+      <a target="_blank" href="https://api.whatsapp.com/send?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}" data-action="share/whatsapp/share"> <i  style="color:green;font-size:30px" class="hoverIcon fa fa-whatsapp"></i> </a>&nbsp;
+      <a target="_blank" href="https://twitter.com/intent/tweet?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}"><i  style="color:blue;font-size:30px " class="hoverIcon fa fa-twitter"></i> </a>&nbsp;
+      <a target="_blank" data-docid="${DOC_INDEX}" onclick="copyWebLink(event, this)"  style="cursor:pointer"><i  style="color:white ;font-size:30px"  class="hoverIcon fa fa-link"></i> </a>&nbsp;
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}" target="_blank"><i  style="color:blue;font-size:30px "  class="hoverIcon fa fa-facebook"></i></a>&nbsp;
     `;
 
     displayAlbumData();
-
+    
     let context = null;
     await auth.onAuthStateChanged((user) => {
       if (!user) {
@@ -105,6 +105,17 @@ const displayAlbumData = () => {
 };
 
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const copyWebLink = (e, curr) => {
+  let dId = curr.dataset.docid;
+  let tempInput = document.createElement("input");
+  tempInput.style = "position: absolute; left: -1000px; top: -1000px";
+  tempInput.value = `https://remixmeofficial.web.app/Dashboard/user.html?album=${dId}`;
+  document.body.appendChild(tempInput);
+  tempInput.select();
+  document.execCommand("copy");
+  document.body.removeChild(tempInput);
+  alert("Link Copied")
+};
 
 let ALL_COMMENTS = [];
 

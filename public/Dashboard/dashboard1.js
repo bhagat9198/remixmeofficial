@@ -72,7 +72,7 @@ let urlLinkHTML = document.querySelector("#urlLink");
 let UTUBE_ID = null;
 const urlLinkVerify = async (e) => {
   e.preventDefault();
-  document.getElementById("embed").style.display = "inline-block";
+
   let url = document.getElementById("getLink").value;
   let urlIds = url.split("/");
   let urlId = urlIds[urlIds.length - 1];
@@ -84,11 +84,13 @@ const urlLinkVerify = async (e) => {
       let idPresent = snapsIdsData.indexOf(urlId);
       if (idPresent >= 0) {
         alert(" Remix already posted");
+        document.getElementById("embed").style.display="none"
         // display msg: id already taken, try another
       } else {
         UTUBE_ID = urlId;
         document.getElementById("embed").src =
           "https://www.youtube.com/embed/" + url.substring(17);
+          document.getElementById("embed").style.display = "inline-block";
         VERIFY_LINK = true;
       }
     });
