@@ -2,15 +2,13 @@ console.log("signup1.js");
 const auth = firebase.auth();
 const db = firebase.firestore();
 const createAccountFormHTML = document.querySelector("#create-account-form");
-let USER_ID = false;
+let COUNTER = 0;
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 auth.onAuthStateChanged(async (user) => {
   if (user) {
-    if (USER_ID) {
-      window.location.replace("./../Dashboard/dashboard.html");
-    } else {
-      document.getElementById("loader").style.display = "none";
+    console.log(COUNTER, typeof COUNTER);
+    if (COUNTER === 0) {
       window.history.back();
     }
   }
@@ -18,39 +16,40 @@ auth.onAuthStateChanged(async (user) => {
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-let soloRadioHTML = createAccountFormHTML.querySelector('#solo-radio');
-let duoRadioHTML = createAccountFormHTML.querySelector('#duo-radio');
-let listenerRadioHTML = createAccountFormHTML.querySelector('#listener-radio');
+let soloRadioHTML = createAccountFormHTML.querySelector("#solo-radio");
+let duoRadioHTML = createAccountFormHTML.querySelector("#duo-radio");
+let listenerRadioHTML = createAccountFormHTML.querySelector("#listener-radio");
 
-const changePlaceholders = e => {
+const changePlaceholders = (e) => {
   e.preventDefault();
 
-  if(soloRadioHTML.checked) {
-    createAccountFormHTML['userName'].placeholder = 'Stage Name / DJ Name'; 
+  if (soloRadioHTML.checked) {
+    createAccountFormHTML["userName"].placeholder = "Stage Name / DJ Name";
   }
 
-  if(duoRadioHTML.checked) {
-    createAccountFormHTML['userName'].placeholder = 'Stage Name / DJ Name'; 
+  if (duoRadioHTML.checked) {
+    createAccountFormHTML["userName"].placeholder = "Stage Name / DJ Name";
   }
 
-  if(listenerRadioHTML.checked) {
-    createAccountFormHTML['userName'].placeholder = 'User Name'; 
+  if (listenerRadioHTML.checked) {
+    createAccountFormHTML["userName"].placeholder = "User Name";
   }
-}
+};
 
-soloRadioHTML.addEventListener('change', changePlaceholders);
-duoRadioHTML.addEventListener('change', changePlaceholders);
-listenerRadioHTML.addEventListener('change', changePlaceholders);
+soloRadioHTML.addEventListener("change", changePlaceholders);
+duoRadioHTML.addEventListener("change", changePlaceholders);
+listenerRadioHTML.addEventListener("change", changePlaceholders);
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const createAccountForm = (e) => {
-  document.getElementById("loader").style.display="inline-block";
+  COUNTER++;
+  document.getElementById("loader").style.display = "inline-block";
   e.preventDefault();
   const password = createAccountFormHTML["password"].value;
   const cpassword = createAccountFormHTML["cpassword"].value;
   if (password === cpassword) {
-    document.getElementById("loader").style.display="none";
+    document.getElementById("loader").style.display = "none";
     const userIs = createAccountFormHTML["userIs"].value;
     const name = createAccountFormHTML["name"].value;
     const userName = createAccountFormHTML["userName"].value;
@@ -73,26 +72,28 @@ const createAccountForm = (e) => {
       country: country,
       logInHistory: [],
       albumUploaded: false,
-      votes: []
+      votes: [],
     };
 
     auth
-    .createUserWithEmailAndPassword(email, password)
-    .then(async(userCredential) => {
-      USER_ID = userCredential.user.uid;
-      data.logInHistory.push(new Date().valueOf().toString());
-      await db.collection('users').doc(USER_ID).set(data);
-      console.log(data, typeof data.logInHistory);
-
-      document.getElementById("loader").style.display="none";
-      window.location.replace('./../Dashboard/dashboard.html');
-    })
-    .catch((error) => {
-      let errorCode = error.code;
-      let errorMessage = error.message;
-      document.getElementById("loader").style.display="none";
-      console.log(error, errorCode, errorMessage);
-    });
+      .createUserWithEmailAndPassword(email, password)
+      .then(async (userCredential) => {
+        data.logInHistory.push(new Date().valueOf().toString());
+        await db
+          .collection("users")
+          .doc(userCredential.user.uid)
+          .set(data)
+          .then(() => {
+            document.getElementById("loader").style.display = "none";
+            window.location.replace("./../Dashboard/dashboard.html");
+          });
+      })
+      .catch((error) => {
+        let errorCode = error.code;
+        let errorMessage = error.message;
+        document.getElementById("loader").style.display = "none";
+        // console.log(error, errorCode, errorMessage);
+      });
   }
 };
 
