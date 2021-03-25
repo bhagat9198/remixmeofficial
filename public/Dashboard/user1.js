@@ -10,7 +10,7 @@ let UDATA = null;
 let VOTE_GIVEN = true;
 const albumVoteHTML = document.querySelector("#album-vote");
 albumVoteHTML.disabled = true;
-const socialIconsHTML = document.querySelector('#socialIcons');
+const socialIconsHTML = document.querySelector("#socialIcons");
 
 const getUrl = async () => {
   let windowUrl = window.location.href;
@@ -26,53 +26,57 @@ getUrl()
     let allAlbums = albumSnap.data().allAlbums;
     // let indexOf = allAlbums.map((el) => el.userDocId).indexOf(DOC_INDEX);
     ALBUM_DATA = allAlbums[DOC_INDEX];
+
+    socialIconsHTML.innerHTML = `
+      <a target="_blank" href="https://api.whatsapp.com/send?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}" data-action="share/whatsapp/share"> <i  style="color:green" class="hoverIcon fa fa-whatsapp"></i> </a>
+      <a target="_blank" href="https://twitter.com/intent/tweet?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}"><i  style="color:blue " class="hoverIcon fa fa-twitter"></i> </a>
+      <a target="_blank" data-docid="${DOC_INDEX}" onclick="copyWebLink(event, this)"  style="cursor:pointer"><i  style="color:black "  class="hoverIcon fa fa-link"></i> </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}" target="_blank">Facebook</a>
+    `;
+
     displayAlbumData();
 
     let context = null;
     await auth.onAuthStateChanged((user) => {
       if (!user) {
         // throw new Error("User is not loggedIn");
-        document.getElementById("logout-btn").style.display="none"
-        document.getElementById("login-btn").style.display="block"
+        document.getElementById("logout-btn").style.display = "none";
+        document.getElementById("login-btn").style.display = "block";
         throw "User is not loggedIn";
       } else {
         context = user;
-        document.getElementById("logout-btn").style.display="block"
-        document.getElementById("login-btn").style.display="none"
+        document.getElementById("logout-btn").style.display = "block";
+        document.getElementById("login-btn").style.display = "none";
       }
     });
     // console.log(context);
     if (context) {
       U_REF = db.collection("users").doc(context.uid);
       return U_REF.get();
+    } else {
+      albumVoteHTML.disabled = false;
     }
   })
   .then((userSnap) => {
     UDATA = userSnap.data();
     // console.log(UDATA);
     UDATA.uId = userSnap.id;
-    // console.log(UDATA);
 
     let voteGivenIndex = UDATA.votes.indexOf(ALBUM_DATA.userDocId);
     if (voteGivenIndex >= 0) {
       VOTE_GIVEN = false;
+      albumVoteHTML.childNodes[0].classList.toggle("fa-heart");
+      albumVoteHTML.childNodes[0].classList.toggle("fa-heart-o");
     }
     albumVoteHTML.disabled = false;
 
-    socialIconsHTML.innerHTML = `
-    <a target="_blank" href="https://api.whatsapp.com/send?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}" data-action="share/whatsapp/share"> <i  style="color:green" class="hoverIcon fa fa-whatsapp"></i> </a>
-    <a target="_blank" href="https://twitter.com/intent/tweet?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}"><i  style="color:blue " class="hoverIcon fa fa-twitter"></i> </a>
-    <a target="_blank" data-docid="${DOC_INDEX}" onclick="copyWebLink(event, this)"  style="cursor:pointer"><i  style="color:black "  class="hoverIcon fa fa-link"></i> </a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}" target="_blank">Facebook</a>
-  `;
-
     return;
   })
-  .catch((error) => {
-    let errorMessage = error.message;
-    console.log(errorMessage);
-    // display error message
-  });
+  // .catch((error) => {
+  //   let errorMessage = error.message;
+  //   console.log(errorMessage);
+  //   // display error message
+  // });
 
 let albumPicHTML = document.querySelector("#album-pic");
 let utubePlayerHTML = document.querySelector("#utube-player");
@@ -92,10 +96,10 @@ const displayAlbumData = () => {
   utubePlayerHTML.src = `https://www.youtube.com/embed/${ALBUM_DATA.link.substring(
     17
   )}`;
-  albumNameHTML.innerHTML = `Manchale[ ${ALBUM_DATA.name} Remix]`;
+  albumNameHTML.innerHTML = `Manchale[ ${ALBUM_DATA.userName} Remix]`;
   let d = new Date(ALBUM_DATA.uploadedAt).toString();
   d = d.substring(0, 15);
-  ablumUsernameHTML.innerHTML = `${ALBUM_DATA.userName} : ${d}`;
+  ablumUsernameHTML.innerHTML = `${ALBUM_DATA.name} : ${d}`;
   albumDescriptionHTML.innerHTML = `<p>${ALBUM_DATA.description}</p>`;
   albumSignHTML.innerHTML = ALBUM_DATA.userName;
 };
@@ -183,8 +187,10 @@ const clickComment = (e) => {
 sendMessageButtonHTML.addEventListener("click", clickComment);
 
 const submitComment = async () => {
-  // console.log("submitComment");
-  let cRef = db.collection("comments").doc(DOC_INDEX);
+  console.log("submitComment");
+  console.log(ALBUM_DATA);
+  let cRef = db.collection("comments").doc(ALBUM_DATA.userDocId);
+  console.log(UDATA);
   let cData = {
     comment: commentBoxHTML.value,
     byId: UDATA.uId,
@@ -213,7 +219,7 @@ const submitComment = async () => {
           .set({ comments: [cData] })
           .then(() => {
             commentBoxHTML.value = "";
-            console.log("comment added");
+            // console.log("comment added");
           })
           .catch((error) => {
             let errorMessage = error.message;
@@ -232,12 +238,20 @@ const submitComment = async () => {
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const updateVoteClick = (e) => {
+  console.log("click");
+  if(!UDATA) {
+    window.location.href = `./../Auth/login.html`;
+  }
+
   if (albumVoteHTML.disabled) {
     return;
   }
 
   e.preventDefault();
   VOTE_GIVEN = !VOTE_GIVEN;
+  console.log(albumVoteHTML.childNodes[0]);
+  albumVoteHTML.childNodes[0].classList.toggle("fa-heart");
+  albumVoteHTML.childNodes[0].classList.toggle("fa-heart-o");
 
   albumVoteHTML.disabled = true;
   let allAlbumsRef = db.collection("miscellaneous").doc("allAlbums");
@@ -281,20 +295,19 @@ const updateVoteClick = (e) => {
 
 albumVoteHTML.addEventListener("click", updateVoteClick);
 
-
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // share
-const albumShareHTML = document.querySelector('#album-share');
+const albumShareHTML = document.querySelector("#album-share");
 
 const showShareIcon = () => {
- socialIconsHTML.style.visibility = "visible";
+  socialIconsHTML.style.visibility = "visible";
   setTimeout(function () {
-   socialIconsHTML.style.visibility = "hidden";
+    socialIconsHTML.style.visibility = "hidden";
   }, 5000);
-}
+};
 
-albumShareHTML.addEventListener('click', showShareIcon);
+albumShareHTML.addEventListener("click", showShareIcon);
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
