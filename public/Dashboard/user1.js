@@ -28,7 +28,7 @@ getUrl()
     ALBUM_DATA = allAlbums[DOC_INDEX];
 
     socialIconsHTML.innerHTML = `
-      <a target="_blank" href="https://api.whatsapp.com/send?text=Hey guys ! Please Vote and Share this Manchale remix by clicking on - https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}" data-action="share/whatsapp/share"> <i  style="color:green;font-size:30px" class="hoverIcon fa fa-whatsapp"></i> </a>&nbsp;
+      <a target="_blank" href="https://api.whatsapp.com/send?text=Hey guys ! Please Vote and Share this remix of Manchale by ${ALBUM_DATA.userName} using the link - https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}" data-action="share/whatsapp/share"> <i  style="color:green;font-size:30px" class="hoverIcon fa fa-whatsapp"></i> </a>&nbsp;
       <a target="_blank" href="https://twitter.com/intent/tweet?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}"><i  style="color:blue;font-size:30px " class="hoverIcon fa fa-twitter"></i> </a>&nbsp;
       <a target="_blank" data-docid="${DOC_INDEX}" onclick="copyWebLink(event, this)"  style="cursor:pointer"><i  style="color:white ;font-size:30px"  class="hoverIcon fa fa-link"></i> </a>&nbsp;
       <a href="https://www.facebook.com/sharer/sharer.php?u=https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}" target="_blank"><i  style="color:blue;font-size:30px "  class="hoverIcon fa fa-facebook"></i></a>&nbsp;
