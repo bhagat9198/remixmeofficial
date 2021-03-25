@@ -132,7 +132,7 @@ const displayLeaderBoard = () => {
     }
  
     li += `
-    <li style="  background: linear-gradient(#9e0300,#420202a2 ); ;list-style:none">
+    <li style="  background: linear-gradient(#330000, #800000 ); ;list-style:none">
       <div class="row">
         <a href="${albumUrl}">
         <div class="col-xs-12 col-sm-2 col-lg-2 date" style="background:#111;padding-top:20px;padding-bottom:20px">
