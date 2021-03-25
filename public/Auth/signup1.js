@@ -79,12 +79,10 @@ const createAccountForm = (e) => {
     auth
     .createUserWithEmailAndPassword(email, password)
     .then(async(userCredential) => {
-      USER_ID = userCredential.user.uid;
       data.logInHistory.push(new Date().valueOf().toString());
-      await db.collection('users').doc(USER_ID).set(data);
-      console.log(data, typeof data.logInHistory);
-
+      await db.collection('users').doc(userCredential.user.uid).set(data);
       document.getElementById("loader").style.display="none";
+      USER_ID = userCredential.user.uid;
       window.location.replace('./../Dashboard/dashboard.html');
     })
     .catch((error) => {
