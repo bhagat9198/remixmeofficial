@@ -4536,6 +4536,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-nav {
   margin: 7.5px -15px;
+  
 }
 
 .navbar-nav > li > a {
@@ -4553,6 +4554,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
     background-color: transparent;
     border: 0;
     box-shadow: none;
+  }
+  .navbar-nav {
+ 
+    padding: 10px;
   }
   .navbar-nav .open .dropdown-menu > li > a,
   .navbar-nav .open .dropdown-menu .dropdown-header {
@@ -6012,7 +6017,7 @@ button.close {
 }
 
 .modal-header .close {
-  margin-top: -2px;
+  margin-top: -36px;
 }
 
 .modal-title {
