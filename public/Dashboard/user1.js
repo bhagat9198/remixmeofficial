@@ -28,8 +28,8 @@ getUrl()
   })
   .then(async (albumSnap) => {
     ALL_ALBUMS = albumSnap.data().allAlbums;
-    let indexOf = ALL_ALBUMS.map((el) => el.userDocId).indexOf(DOC_ID);
-    ALBUM_DATA = ALL_ALBUMS[indexOf];
+    DOC_INDEX = ALL_ALBUMS.map((el) => el.userDocId).indexOf(DOC_ID);
+    ALBUM_DATA = ALL_ALBUMS[DOC_INDEX];
 
     socialIconsHTML.innerHTML = `
       <a target="_blank" href="https://api.whatsapp.com/send?text=Hey guys ! Please Vote and Share this remix of Manchale by ${ALBUM_DATA.userName} using the link - https://remixmeofficial.web.app/Dashboard/user.html?album=${ALL_ALBUMS.userDocId}" data-action="share/whatsapp/share"> <i  style="color:green;font-size:19px" class="hoverIcon fa fa-whatsapp"></i> </a>&nbsp;
@@ -268,10 +268,11 @@ const updateVoteClick = (e) => {
   albumVoteHTML.disabled = true;
 
   if (!VOTE_GIVEN) {
+    console.log(ALL_ALBUMS, DOC_INDEX);
     ALL_ALBUMS[DOC_INDEX].votes++;
   } else {
-    if (!(allAlbumsArr[DOC_INDEX].votes <= 0)) {
-      allAlbumsArr[DOC_INDEX].votes--;
+    if (!(ALL_ALBUMS[DOC_INDEX].votes <= 0)) {
+      ALL_ALBUMS[DOC_INDEX].votes--;
     } else {
       // user munpilating, error 401
     }
@@ -279,9 +280,10 @@ const updateVoteClick = (e) => {
 
   sortAlbums();
   reCallRank();
-  
+  console.log(ALL_ALBUMS);
+
   ALBUMS_REF
-    .update(ALL_ALBUMS)
+    .update({allAlbums: ALL_ALBUMS})
     .then(() => {
       if (!VOTE_GIVEN) {
         UDATA.votes.push(ALBUM_DATA.userDocId);
