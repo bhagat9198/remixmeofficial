@@ -1,10 +1,13 @@
 console.log("user1.js");
 const auth = firebase.auth();
 const db = firebase.firestore();
+let ALL_ALBUMS = [];
 // const fStorage = firebase.storage();
 
 let ALBUM_DATA = null;
+let ALBUMS_REF = null;
 let DOC_INDEX = null;
+let DOC_ID = null;
 let U_REF = null;
 let UDATA = null;
 let VOTE_GIVEN = true;
@@ -15,27 +18,28 @@ const socialIconsHTML = document.querySelector("#socialIcons");
 const getUrl = async () => {
   let windowUrl = window.location.href;
   let quries = windowUrl.split("?");
-  DOC_INDEX = quries[1].split("=")[1];
+  DOC_ID = quries[1].split("=")[1];
 };
 
 getUrl()
   .then(() => {
-    return db.collection("miscellaneous").doc("allAlbums").get();
+    ALBUMS_REF = db.collection("miscellaneous").doc("allAlbums");
+    return ALBUMS_REF.get();
   })
   .then(async (albumSnap) => {
-    let allAlbums = albumSnap.data().allAlbums;
-    // let indexOf = allAlbums.map((el) => el.userDocId).indexOf(DOC_INDEX);
-    ALBUM_DATA = allAlbums[DOC_INDEX];
- 
+    ALL_ALBUMS = albumSnap.data().allAlbums;
+    let indexOf = ALL_ALBUMS.map((el) => el.userDocId).indexOf(DOC_ID);
+    ALBUM_DATA = ALL_ALBUMS[indexOf];
+
     socialIconsHTML.innerHTML = `
-      <a target="_blank" href="https://api.whatsapp.com/send?text=Hey guys ! Please Vote and Share this remix of Manchale by ${ALBUM_DATA.userName} using the link - https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}" data-action="share/whatsapp/share"> <i  style="color:green;font-size:19px" class="hoverIcon fa fa-whatsapp"></i> </a>&nbsp;
-      <a target="_blank" href="https://twitter.com/intent/tweet?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}"><i  style="color:blue;font-size:19px " class="hoverIcon fa fa-twitter"></i> </a>&nbsp;
-      <a target="_blank" data-docid="${DOC_INDEX}" onclick="copyWebLink(event, this)"  style="cursor:pointer"><i  style="color:white ;font-size:19px"  class="hoverIcon fa fa-link"></i> </a>&nbsp;
-      <a href="https://www.facebook.com/sharer/sharer.php?u=https://remixmeofficial.web.app/Dashboard/user.html?album=${DOC_INDEX}" target="_blank"><i  style="color:blue;font-size:19px "  class="hoverIcon fa fa-facebook"></i></a>&nbsp;
+      <a target="_blank" href="https://api.whatsapp.com/send?text=Hey guys ! Please Vote and Share this remix of Manchale by ${ALBUM_DATA.userName} using the link - https://remixmeofficial.web.app/Dashboard/user.html?album=${ALL_ALBUMS.userDocId}" data-action="share/whatsapp/share"> <i  style="color:green;font-size:19px" class="hoverIcon fa fa-whatsapp"></i> </a>&nbsp;
+      <a target="_blank" href="https://twitter.com/intent/tweet?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${ALL_ALBUMS.userDocId}"><i  style="color:blue;font-size:19px " class="hoverIcon fa fa-twitter"></i> </a>&nbsp;
+      <a target="_blank" data-docid="${ALL_ALBUMS.userDocId}" onclick="copyWebLink(event, this)"  style="cursor:pointer"><i  style="color:white ;font-size:19px"  class="hoverIcon fa fa-link"></i> </a>&nbsp;
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://remixmeofficial.web.app/Dashboard/user.html?album=${ALL_ALBUMS.userDocId}" target="_blank"><i  style="color:blue;font-size:19px "  class="hoverIcon fa fa-facebook"></i></a>&nbsp;
     `;
 
     displayAlbumData();
-    
+
     let context = null;
     await auth.onAuthStateChanged((user) => {
       if (!user) {
@@ -69,14 +73,13 @@ getUrl()
       albumVoteHTML.childNodes[0].classList.toggle("fa-heart-o");
     }
     albumVoteHTML.disabled = false;
-
     return;
-  })
-  // .catch((error) => {
-  //   let errorMessage = error.message;
-  //   console.log(errorMessage);
-  //   // display error message
-  // });
+  });
+// .catch((error) => {
+//   let errorMessage = error.message;
+//   console.log(errorMessage);
+//   // display error message
+// });
 
 let albumPicHTML = document.querySelector("#album-pic");
 let utubePlayerHTML = document.querySelector("#utube-player");
@@ -114,13 +117,13 @@ const copyWebLink = (e, curr) => {
   tempInput.select();
   document.execCommand("copy");
   document.body.removeChild(tempInput);
-  alert("Link Copied")
+  alert("Link Copied");
 };
 
 let ALL_COMMENTS = [];
 
 db.collection("comments")
-  .doc(DOC_INDEX)
+  .doc(DOC_ID)
   .onSnapshot((cSnap) => {
     if (cSnap.exists) {
       ALL_COMMENTS = cSnap.data().comments;
@@ -199,9 +202,7 @@ sendMessageButtonHTML.addEventListener("click", clickComment);
 
 const submitComment = async () => {
   console.log("submitComment");
-  console.log(ALBUM_DATA);
-  let cRef = db.collection("comments").doc(ALBUM_DATA.userDocId);
-  console.log(UDATA);
+  let cRef = db.collection("comments").doc(DOC_ID);
   let cData = {
     comment: commentBoxHTML.value,
     byId: UDATA.uId,
@@ -250,7 +251,7 @@ const submitComment = async () => {
 
 const updateVoteClick = (e) => {
   console.log("click");
-  if(!UDATA) {
+  if (!UDATA) {
     window.location.href = `./../Auth/login.html`;
   }
 
@@ -265,24 +266,22 @@ const updateVoteClick = (e) => {
   albumVoteHTML.childNodes[0].classList.toggle("fa-heart-o");
 
   albumVoteHTML.disabled = true;
-  let allAlbumsRef = db.collection("miscellaneous").doc("allAlbums");
 
-  allAlbumsRef
-    .get()
-    .then((allAlbumsSnaps) => {
-      let allAlbumsData = allAlbumsSnaps.data();
-      let allAlbumsArr = allAlbumsData.allAlbums;
-      if (!VOTE_GIVEN) {
-        allAlbumsArr[DOC_INDEX].votes++;
-      } else {
-        if (!(allAlbumsArr[DOC_INDEX].votes <= 0)) {
-          allAlbumsArr[DOC_INDEX].votes--;
-        } else {
-          // user munpilating, error 401
-        }
-      }
-      return allAlbumsRef.update(allAlbumsData);
-    })
+  if (!VOTE_GIVEN) {
+    ALL_ALBUMS[DOC_INDEX].votes++;
+  } else {
+    if (!(allAlbumsArr[DOC_INDEX].votes <= 0)) {
+      allAlbumsArr[DOC_INDEX].votes--;
+    } else {
+      // user munpilating, error 401
+    }
+  }
+
+  sortAlbums();
+  reCallRank();
+  
+  ALBUMS_REF
+    .update(ALL_ALBUMS)
     .then(() => {
       if (!VOTE_GIVEN) {
         UDATA.votes.push(ALBUM_DATA.userDocId);
@@ -337,3 +336,33 @@ const logout = (e) => {
 };
 
 logoutBtnHTML.addEventListener("click", logout);
+
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const sortAlbums = () => {
+  function descreacingOrder(a, b) {
+    return b.votes - a.votes;
+  }
+  ALL_ALBUMS.sort(descreacingOrder);
+};
+
+const reCallRank = () => {
+  let maxRank = 1;
+  let maxVotes = ALL_ALBUMS[0].votes;
+
+  ALL_ALBUMS.map((album) => {
+    if (album.votes < maxVotes) {
+      maxRank++;
+      maxVotes = album.votes;
+    }
+    if (maxRank < album.maxRank) {
+      album.maxRank = maxRank;
+    } else {
+      album.currentRank = maxRank;
+    }
+  });
+
+
+};
+
+// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
