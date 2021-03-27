@@ -20,6 +20,7 @@ const sortAlbums = () => {
   }
   ALL_ALBUMS.sort(descreacingOrder);
 };
+
 var user = firebase.auth().currentUser;
 
 let allAlbumsListHTML = document.querySelector("#all-albums-list");
@@ -75,7 +76,7 @@ const displayLeaderBoard = () => {
       }
     }
 
-    let albumUrl = `./Dashboard/user.html?album=${index}`;
+    let albumUrl = `./Dashboard/user.html?album=${album.userDocId}`;
 
     let imgPath;
     if (!album.img.url) {
@@ -91,7 +92,7 @@ const displayLeaderBoard = () => {
         imgPath = album.img.url;
       }
 
-      albumUrl = `./user.html?album=${index}`;
+      albumUrl = `./user.html?album=${album.userDocId}`;
       for (let i = 0; i < UDATA.votes.length; i++) {
         if (UDATA.votes[i] === album.userDocId) {
           voteStatus = `
@@ -108,27 +109,12 @@ const displayLeaderBoard = () => {
               width:100px ;
               margin-left:33%;
               text-align:center
-              
             "
             >&nbsp;Vote
           </i>`;
           break;
         }
       }
-    }
- 
-    if(album.img.url =="none" ||album.img.url ==null){
-
-      if(user){
-
-        album.img.url = "../assets/images/common.png"
-      }else{
-   
-        album.img.url = "assets/images/common.png"
-      }
-  
-    }else{
-     
     }
  
     li += `
@@ -206,10 +192,10 @@ const displayLeaderBoard = () => {
           <br>
         <center><span style="visibility:hidden" id="socialIcons${index}" >
          
-          <a  target="_blank" href="https://api.whatsapp.com/send?text=Hey guys ! Please Vote and Share this remix of Manchale by ${album.userName} using the link-  https://remixmeofficial.web.app/Dashboard/user.html?album=${index}" data-action="share/whatsapp/share"> <i  style="color:green" class="hoverIcon fa fa-whatsapp"></i> </a>
-          <a  target="_blank" href="https://twitter.com/intent/tweet?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${index}"><i  style="color:blue " class="hoverIcon fa fa-twitter"></i> </a>
-          <a  target="_blank" data-docid="${index}" onclick="copyWebLink(event, this)"   style="cursor:pointer"><i  style="color:red "  class="hoverIcon fa fa-link"></i> </a>
-          <a  href="https://www.facebook.com/sharer/sharer.php?u=https://remixmeofficial.web.app/Dashboard/user.html?album=${index}" target="_blank"><i  style="color:blue "  class="hoverIcon fa fa-facebook"></i> </a>
+          <a  target="_blank" href="https://api.whatsapp.com/send?text=Hey guys ! Please Vote and Share this remix of Manchale by ${album.userName} using the link-  https://remixmeofficial.web.app/Dashboard/user.html?album=${album.userDocId}" data-action="share/whatsapp/share"> <i  style="color:green" class="hoverIcon fa fa-whatsapp"></i> </a>
+          <a  target="_blank" href="https://twitter.com/intent/tweet?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${album.userDocId}"><i  style="color:blue " class="hoverIcon fa fa-twitter"></i> </a>
+          <a  target="_blank" data-docid="${album.userDocId}" onclick="copyWebLink(event, this)"   style="cursor:pointer"><i  style="color:cyan "  class="hoverIcon fa fa-link"></i> </a>
+          <a  href="https://www.facebook.com/sharer/sharer.php?u=https://remixmeofficial.web.app/Dashboard/user.html?album=${album.userDocId}" target="_blank"><i  style="color:blue "  class="hoverIcon fa fa-facebook"></i> </a>
           </span></center>
         </div>
       </div>

@@ -74,8 +74,15 @@ const urlLinkVerify = async (e) => {
   e.preventDefault();
 
   let url = document.getElementById("getLink").value;
-  let urlIds = url.split("/");
-  let urlId = urlIds[urlIds.length - 1];
+  let urlId;
+  if(url.includes('youtu.be')) {
+    urlId = url.substring(17, 28);
+  }
+  console.log(url, typeof url);
+  if(url.includes('www.youtube.com')) {
+    urlId = url.split('?v=')[1].substring(0, 11);
+  }
+
   db.collection("miscellaneous")
     .doc("youtubeIDs")
     .get()
@@ -89,7 +96,7 @@ const urlLinkVerify = async (e) => {
       } else {
         UTUBE_ID = urlId;
         document.getElementById("embed").src =
-          "https://www.youtube.com/embed/" + url.substring(17);
+          "https://www.youtube.com/embed/" + urlId;
           document.getElementById("embed").style.display = "inline-block";
         VERIFY_LINK = true;
       }
