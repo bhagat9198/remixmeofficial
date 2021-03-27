@@ -122,7 +122,9 @@ let ALL_COMMENTS = [];
 db.collection("comments")
   .doc(DOC_INDEX)
   .onSnapshot((cSnap) => {
+    
     if (cSnap.exists) {
+      
       ALL_COMMENTS = cSnap.data().comments;
       displayComments();
     }
@@ -132,6 +134,7 @@ let allCommentsHolderHTML = document.querySelector("#all-comments-holder");
 let totalCommentsHTML = document.querySelector("#total-comments");
 
 const displayComments = () => {
+  
   let li = "";
   ALL_COMMENTS.map((c) => {
     let ddd = new Date(c.commentAt);

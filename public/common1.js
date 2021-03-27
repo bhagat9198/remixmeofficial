@@ -132,7 +132,7 @@ const displayLeaderBoard = () => {
     }
  
     li += `
-    <li style="  background: linear-gradient(#330000, #800000 ); ;list-style:none">
+    <li style="  background: linear-gradient(#800000,#80000014); ;list-style:none">
       <div class="row">
         <a href="${albumUrl}">
         <div class="col-xs-12 col-sm-2 col-lg-2 date" style="background:#111;padding-top:20px;padding-bottom:20px">
@@ -208,7 +208,7 @@ const displayLeaderBoard = () => {
          
           <a  target="_blank" href="https://api.whatsapp.com/send?text=Hey guys ! Please Vote and Share this remix of Manchale by ${album.userName} using the link-  https://remixmeofficial.web.app/Dashboard/user.html?album=${index}" data-action="share/whatsapp/share"> <i  style="color:green" class="hoverIcon fa fa-whatsapp"></i> </a>
           <a  target="_blank" href="https://twitter.com/intent/tweet?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${index}"><i  style="color:blue " class="hoverIcon fa fa-twitter"></i> </a>
-          <a  target="_blank" data-docid="${index}" onclick="copyWebLink(event, this)"   style="cursor:pointer"><i  style="color:black "  class="hoverIcon fa fa-link"></i> </a>
+          <a  target="_blank" data-docid="${index}" onclick="copyWebLink(event, this)"   style="cursor:pointer"><i  style="color:red "  class="hoverIcon fa fa-link"></i> </a>
           <a  href="https://www.facebook.com/sharer/sharer.php?u=https://remixmeofficial.web.app/Dashboard/user.html?album=${index}" target="_blank"><i  style="color:blue "  class="hoverIcon fa fa-facebook"></i> </a>
           </span></center>
         </div>

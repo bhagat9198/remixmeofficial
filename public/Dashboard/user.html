@@ -388,8 +388,8 @@
 
 
     <script>
-      var openInbox = document.getElementById("myBtn");
-      openInbox.click();
+      // var openInbox = document.getElementById("myBtn");
+      // openInbox.click();
 
       function w3_open() {
         document.getElementById("mySidebar").style.display = "block";
@@ -415,25 +415,11 @@
         }
       }
 
-      openMail("Borge");
-      function openMail(personName) {
-        var i;
-        var x = document.getElementsByClassName("person");
-        for (i = 0; i < x.length; i++) {
-          x[i].style.display = "none";
-        }
-        x = document.getElementsByClassName("test");
-        for (i = 0; i < x.length; i++) {
-          x[i].className = x[i].className.replace(" w3-light-grey", "");
-        }
-        document.getElementById(personName).style.display = "block";
-        event.currentTarget.className += " w3-light-grey";
-      }
     </script>
 
     <script>
-      var openTab = document.getElementById("firstTab");
-      openTab.click();
+      // var openTab = document.getElementById("firstTab");
+      // openTab.click();
     </script>
   </body>
 
