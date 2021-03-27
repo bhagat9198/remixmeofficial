@@ -215,7 +215,7 @@
 
             <div class="fronttext">
               <br>
-              <span style="color: white ;font-weight: 900; padding: 10px;background-color: rgba(255, 0, 0, 0.315);font-size: 13px;" > Contest Ends in  <span id="Timer"></span></span>
+              <span id="Expired" style="color: white ;font-weight: 900; padding: 10px;background-color: rgba(255, 0, 0, 0.315);font-size: 13px;" > Contest Ends in  <span id="Timer"></span></span>
 
               <br />
               <br />
@@ -669,7 +669,8 @@
       // If the count down is over, write some text
       if (distance < 0) {
         clearInterval(x);
-        document.getElementById("Timer").innerHTML = "EXPIRED";
+        document.getElementById("Timer").innerHTML = "The Contest Has Been EXPIRED ";
+        document.getElementById("Expired").innerHTML = "The Contest Has Been EXPIRED ";
       }
     }, 1000);
 

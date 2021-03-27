@@ -214,7 +214,7 @@
           <div class="col-sm-6 col-xs-12">
             <div class="fronttext">
               <br>
-              <span style="color: white ;font-weight: 900; padding: 10px;background-color: rgba(255, 0, 0, 0.315);font-size: 13px;" > Contest Ends in  <span id="Timer"></span></span>
+              <span style="color: white ;font-weight: 900; padding: 10px;background-color: rgba(255, 0, 0, 0.315);font-size: 13px;" id="Expired" > Contest Ends in  <span id="Timer"></span></span>
 
               <br />
               <br />
@@ -816,7 +816,7 @@
       }
     }
 
-    var countDownDate = new Date("April 16, 2021 11:59:00").getTime();
+    var countDownDate = new Date("April 27, 2021 11:47:00").getTime();
 
     // Update the count down every 1 second
     var x = setInterval(function () {
@@ -841,7 +841,8 @@
       // If the count down is over, write some text
       if (distance < 0) {
         clearInterval(x);
-        document.getElementById("Timer").innerHTML = "EXPIRED";
+        document.getElementById("Timer").innerHTML = "The Contest Has Been EXPIRED ";
+        document.getElementById("Expired").innerHTML = "The Contest Has Been EXPIRED ";
       }
     }, 1000);
 
