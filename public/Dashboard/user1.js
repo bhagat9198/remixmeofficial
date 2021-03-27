@@ -99,7 +99,7 @@ const displayAlbumData = () => {
   utubePlayerHTML.src = `https://www.youtube.com/embed/${ALBUM_DATA.link.substring(
     17
   )}`;
-  albumNameHTML.innerHTML = `Manchale[ ${ALBUM_DATA.userName} Remix]`;
+  albumNameHTML.innerHTML = `Manchale [${ALBUM_DATA.userName} Remix]`;
   let d = new Date(ALBUM_DATA.uploadedAt).toString();
   d = d.substring(0, 15);
   ablumUsernameHTML.innerHTML = `${ALBUM_DATA.name} : ${d}`;
