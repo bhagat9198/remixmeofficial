@@ -32,10 +32,10 @@ getUrl()
     ALBUM_DATA = ALL_ALBUMS[DOC_INDEX];
 
     socialIconsHTML.innerHTML = `
-      <a target="_blank" href="https://api.whatsapp.com/send?text=Hey guys ! Please Vote and Share this remix of Manchale by ${ALBUM_DATA.userName} using the link - https://remixmeofficial.web.app/Dashboard/user.html?album=${ALL_ALBUMS.userDocId}" data-action="share/whatsapp/share"> <i  style="color:green;font-size:19px" class="hoverIcon fa fa-whatsapp"></i> </a>&nbsp;
-      <a target="_blank" href="https://twitter.com/intent/tweet?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${ALL_ALBUMS.userDocId}"><i  style="color:blue;font-size:19px " class="hoverIcon fa fa-twitter"></i> </a>&nbsp;
-      <a target="_blank" data-docid="${ALL_ALBUMS.userDocId}" onclick="copyWebLink(event, this)"  style="cursor:pointer"><i  style="color:cyan ;font-size:19px"  class="hoverIcon fa fa-link"></i> </a>&nbsp;
-      <a href="https://www.facebook.com/sharer/sharer.php?u=https://remixmeofficial.web.app/Dashboard/user.html?album=${ALL_ALBUMS.userDocId}" target="_blank"><i  style="color:blue;font-size:19px "  class="hoverIcon fa fa-facebook"></i></a>&nbsp;
+      <a target="_blank" href="https://api.whatsapp.com/send?text=Hey guys ! Please Vote and Share this remix of Manchale by ${ALBUM_DATA.userName} using the link - https://remixmeofficial.web.app/Dashboard/user.html?album=${ALL_ALBUMS.userDocId}" data-action="share/whatsapp/share"> <i  style="color:green;font-size:15px" class="hoverIcon fa fa-whatsapp"></i> </a>&nbsp;
+      <a target="_blank" href="https://twitter.com/intent/tweet?text=https://remixmeofficial.web.app/Dashboard/user.html?album=${ALL_ALBUMS.userDocId}"><i  style="color:blue;font-size:15px " class="hoverIcon fa fa-twitter"></i> </a>&nbsp;
+      <a target="_blank" data-docid="${ALL_ALBUMS.userDocId}" onclick="copyWebLink(event, this)"  style="cursor:pointer"><i  style="color:cyan ;font-size:15px"  class="hoverIcon fa fa-link"></i> </a>&nbsp;
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://remixmeofficial.web.app/Dashboard/user.html?album=${ALL_ALBUMS.userDocId}" target="_blank"><i  style="color:blue;font-size:15px "  class="hoverIcon fa fa-facebook"></i></a>&nbsp;
     `;
 
     displayAlbumData();
