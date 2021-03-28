@@ -43,7 +43,9 @@ listenerRadioHTML.addEventListener("change", changePlaceholders);
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const createAccountForm = (e) => {
-  COUNTER++;
+ 
+  if(document.getElementById("terms").checked){
+    COUNTER++;
   document.getElementById("loader").style.display = "inline-block";
   e.preventDefault();
   const password = createAccountFormHTML["password"].value;
@@ -94,7 +96,13 @@ const createAccountForm = (e) => {
         document.getElementById("loader").style.display = "none";
         // console.log(error, errorCode, errorMessage);
       });
+  }else{
+    alert("Passoword & Confirm password do not match")
   }
+  }else{
+    alert("Please accept the terms and conditions to continue")
+  }
+  
 };
 
 createAccountFormHTML.addEventListener("submit", createAccountForm);
